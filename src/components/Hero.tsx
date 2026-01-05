@@ -92,11 +92,11 @@ export function Hero() {
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
                   I'm{" "}
                   <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-500 bg-clip-text text-transparent">
-                    Vinodhan
+                    VINODHAN V A
                   </span>
                   <motion.span
                     animate={{ rotate: [0, 14, -8, 14, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1 }}
+                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 2 }}
                     className="inline-block origin-[70%_70%] ml-2"
                   >
                     👋🏻
