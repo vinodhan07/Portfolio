@@ -89,7 +89,7 @@ export function Hero() {
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2">
                   Hi,
                 </h2>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 whitespace-nowrap">
                   I'm{" "}
                   <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-500 bg-clip-text text-transparent">
                     VINODHAN V A
