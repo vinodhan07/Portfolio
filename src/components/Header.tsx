@@ -44,10 +44,11 @@ export function Header() {
         <div className="flex items-center justify-between">
           <motion.div
             className="text-2xl font-bold text-primary cursor-pointer"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.2 }}
             onClick={() => scrollToSection("#home")}
           >
-            Portfolio
+            Vinodhan.ai
           </motion.div>
 
           {/* Desktop Navigation */}

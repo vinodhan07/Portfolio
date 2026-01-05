@@ -29,6 +29,8 @@ const techIcons = [
   { name: "Supabase", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" },
   { name: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
   { name: "Colab", logo: "https://colab.research.google.com/img/colab_favicon_256px.png" },
+  { name: "Cursor", logo: "https://www.cursor.com/favicon.ico" },
+  { name: "Antigravity", logo: "https://antigravity.dev/favicon.ico" },
 ];
 
 export function Skills() {
