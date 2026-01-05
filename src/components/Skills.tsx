@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import antigravityLogo from "@/assets/antigravity-logo.png";
 
 const expertisePoints = [
   "Proficient in building interactive, user-friendly web and mobile applications using modern frameworks and libraries.",
@@ -30,7 +31,7 @@ const techIcons = [
   { name: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
   { name: "Colab", logo: "https://colab.research.google.com/img/colab_favicon_256px.png" },
   { name: "Cursor", logo: "https://www.cursor.com/favicon.ico" },
-  { name: "Antigravity", logo: "https://antigravity.dev/favicon.ico" },
+  { name: "Antigravity", logo: antigravityLogo },
 ];
 
 export function Skills() {
