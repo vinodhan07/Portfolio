@@ -2,8 +2,24 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Download, Instagram } from "lucide-react";
 import { Button } from "./ui/button";
 import avatarImg from "@/assets/avatar.png";
+import { useEffect, useState } from "react";
 
 export function Hero() {
+  const fullText = "I'm a full-stack developer passionate about building scalable web applications and creating seamless user experiences that drive innovation and deliver tangible impact.";
+  const [displayText, setDisplayText] = useState("");
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
+
+  useEffect(() => {
+    if (displayText.length < fullText.length) {
+      const timeout = setTimeout(() => {
+        setDisplayText(fullText.slice(0, displayText.length + 1));
+      }, 30);
+      return () => clearTimeout(timeout);
+    } else {
+      setIsTypingComplete(true);
+    }
+  }, [displayText, fullText]);
+
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -64,23 +80,23 @@ export function Hero() {
       />
 
       <div className="container mx-auto px-4 md:px-8 lg:px-16 py-20 relative z-10">
-        <div className="flex items-center justify-between gap-12">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           {/* Left content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex-1 flex gap-8"
+            className="flex-1 flex gap-8 text-center lg:text-left"
           >
             {/* Vertical accent line */}
             <motion.div
               initial={{ height: 0 }}
               animate={{ height: "100%" }}
               transition={{ duration: 1, delay: 0.3 }}
-              className="w-1 bg-primary rounded-full hidden md:block"
+              className="w-1 bg-primary rounded-full hidden lg:block"
             />
 
-            <div className="flex flex-col justify-center space-y-8">
+            <div className="flex flex-col justify-center items-center lg:items-start space-y-8">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -106,20 +122,24 @@ export function Hero() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
-                  className="text-base md:text-lg text-muted-foreground max-w-xl leading-relaxed"
+                  className="text-base md:text-lg text-muted-foreground max-w-xl leading-relaxed mx-auto lg:mx-0"
                 >
-                  I'm a full-stack developer passionate about building scalable web applications
-                  and creating seamless user experiences that drive innovation and deliver
-                  tangible impact.
+                  {displayText}
+                  {!isTypingComplete && (
+                    <motion.span
+                      animate={{ opacity: [1, 0] }}
+                      transition={{ duration: 0.5, repeat: Infinity }}
+                      className="inline-block w-0.5 h-5 bg-primary ml-1 align-middle"
+                    />
+                  )}
                 </motion.p>
               </motion.div>
 
-              {/* Social links and Download CV */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
-                className="flex flex-wrap items-center gap-4"
+                className="flex flex-wrap items-center justify-center lg:justify-start gap-4"
               >
                 {socialLinks.map((social) => (
                   <motion.a
