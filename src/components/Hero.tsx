@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Download, Instagram } from "lucide-react";
+import { Github, Linkedin, Mail, Download, Instagram, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 import avatarImg from "@/assets/avatar.png";
 import { useEffect, useState } from "react";
@@ -193,6 +193,24 @@ export function Hero() {
           </motion.div>
         </div>
       </div>
+
+      {/* Scroll down indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer"
+        onClick={() => scrollToSection("#about")}
+      >
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          className="flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <span className="text-xs uppercase tracking-widest">Scroll</span>
+          <ChevronDown size={24} />
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
