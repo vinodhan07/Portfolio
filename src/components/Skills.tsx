@@ -3,36 +3,6 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import antigravityLogo from "@/assets/antigravity-logo.png";
 
-const skillCategories = [
-  {
-    name: "Frontend",
-    skills: [
-      { name: "React / TypeScript", level: 90 },
-      { name: "HTML / CSS", level: 95 },
-      { name: "JavaScript", level: 90 },
-      { name: "Flutter", level: 80 },
-    ],
-  },
-  {
-    name: "Backend",
-    skills: [
-      { name: "Python", level: 85 },
-      { name: "Java", level: 75 },
-      { name: "Node.js", level: 80 },
-      { name: "REST APIs", level: 88 },
-    ],
-  },
-  {
-    name: "Database & Cloud",
-    skills: [
-      { name: "Firebase / Supabase", level: 85 },
-      { name: "MongoDB / MySQL", level: 80 },
-      { name: "AWS / GCP", level: 75 },
-      { name: "Docker", level: 70 },
-    ],
-  },
-];
-
 const expertisePoints = [
   "Proficient in building interactive, user-friendly web and mobile applications using modern frameworks and libraries.",
   "Expert at integrating APIs and developing back-end solutions to support dynamic and scalable applications.",
@@ -86,51 +56,13 @@ export function Skills() {
           </p>
         </motion.div>
 
-        {/* Skill Progress Bars */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {skillCategories.map((category, catIndex) => (
-            <motion.div
-              key={category.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: catIndex * 0.15 }}
-              className="bg-card/50 backdrop-blur-sm p-6 rounded-2xl border border-border"
-            >
-              <h3 className="text-lg font-semibold text-foreground mb-6">{category.name}</h3>
-              <div className="space-y-5">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skill.name}>
-                    <div className="flex justify-between mb-2">
-                      <span className="text-sm text-muted-foreground">{skill.name}</span>
-                      <span className="text-sm text-primary font-medium">{skill.level}%</span>
-                    </div>
-                    <div className="h-2 bg-muted/50 rounded-full overflow-hidden">
-                      <motion.div
-                        className="h-full bg-gradient-to-r from-primary to-primary/70 rounded-full"
-                        initial={{ width: 0 }}
-                        animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
-                        transition={{
-                          duration: 1,
-                          delay: catIndex * 0.15 + skillIndex * 0.1 + 0.3,
-                          ease: "easeOut",
-                        }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Expertise Points */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {expertisePoints.map((point, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
               className="bg-card/50 backdrop-blur-sm p-6 rounded-2xl border border-border hover:border-primary/50 hover:shadow-[0_0_25px_rgba(var(--primary-rgb),0.15)] transition-all duration-300 hover:scale-105"
             >
               <div className="flex items-start gap-3">
