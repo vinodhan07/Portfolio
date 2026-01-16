@@ -1,38 +1,41 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Trophy, FileText, Github, Code } from "lucide-react";
+import { Trophy, Award, FileText, Users } from "lucide-react";
 
 const achievements = [
   {
-    icon: Trophy,
-    title: "SIH 2024 & 2025",
-    description: "Consecutively nominated after clearing prelims to represent the institution with innovative solutions.",
+    icon: Award,
+    title: "Certifications",
+    items: [
+      "Prompt Engineering – Great Learning",
+      "Java Programming – Thinkverge",
+      "AI for Beginners – HP Foundation 2025",
+    ],
   },
   {
     icon: Trophy,
-    title: "Futurepreneur 2024 (StartupTN)",
-    description: "Secured 3rd place (Coimbatore zone) for developing a high-impact startup idea.",
+    title: "Hackathon Excellence",
+    items: [
+      "Special Prize – AARAM'25 UX Designathon (Cybernaut)",
+      "Finalist in Urban Vision Hackathon 2025",
+      "Finalist in BNKHUB – Led AI development team",
+    ],
   },
   {
     icon: FileText,
-    title: "Patent Publication",
-    description: "BioKey: A Biometric Authentication-Based Application for Secure Data Access (202541051836A).",
+    title: "Research & Publication",
+    items: [
+      "Published paper in the domain of multimodal AI",
+    ],
   },
   {
-    icon: FileText,
-    title: "Paper Publication",
-    description: "Lurnix: An Intelligent Ecosystem for Neurodiverse Learning through AI and Multimodal Content.",
-  },
-  {
-    icon: Code,
-    title: "Open Source",
-    description: "Built RouteLens (VS Code) & Code Tracer CLI (NPM) for enhanced developer productivity.",
-  },
-  {
-    icon: Github,
-    title: "GitHub",
-    description: "14+ Real-World Projects (8+ Solo Projects) with 1000+ Contributions; LeetCode: 110+ problems.",
+    icon: Users,
+    title: "Leadership",
+    items: [
+      "Secretary – Rotaract Club",
+      "Campus Google Student Ambassador",
+    ],
   },
 ];
 
@@ -81,10 +84,15 @@ export function Achievements() {
                     <achievement.icon className="text-primary" size={20} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-foreground mb-2">{achievement.title}</h4>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      {achievement.description}
-                    </p>
+                    <h4 className="font-bold text-foreground mb-3">{achievement.title}</h4>
+                    <ul className="space-y-1.5">
+                      {achievement.items.map((item, i) => (
+                        <li key={i} className="text-muted-foreground text-sm leading-relaxed flex items-start gap-2">
+                          <span className="text-primary mt-1.5">•</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </motion.div>

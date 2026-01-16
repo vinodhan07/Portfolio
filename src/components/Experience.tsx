@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Calendar } from "lucide-react";
+import { Calendar, Network } from "lucide-react";
 
 const experiences = [
   {
-    title: "Software Developer Intern",
-    company: "RAMPeX Technologies",
-    duration: "11 Months",
-    description: "Architected and developed scalable, modular full-stack applications with maintainable architecture and cloud deployment. Contributed to an Agile team, handling end-to-end development, CI/CD, code reviews, and testing to deliver production-ready solutions.",
+    title: "n8n Automation Experience",
+    company: "Workflow Automation",
+    duration: "Ongoing",
+    description: "Built AI-powered n8n automation workflows using LLMs for HR and communication use cases, integrating APIs and webhooks to deliver scalable pipelines that reduce manual workload and improve operational efficiency.",
   },
   {
     title: "Full Stack Developer Intern",
