@@ -29,7 +29,6 @@ export function Contact() {
     const email = formData.get("email") as string;
     const message = formData.get("message") as string;
 
-    // Basic validation
     if (!name.trim() || !email.trim() || !message.trim()) {
       toast({
         title: "Please fill all fields",
@@ -64,11 +63,12 @@ export function Contact() {
             initial={{ opacity: 0, x: -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
+            className="bg-card/30 backdrop-blur-sm p-8 rounded-2xl border border-border/50"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-2">Get in</h2>
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">Touch</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-1">Get in</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">Touch</h2>
             
-            <p className="text-muted-foreground mb-12 max-w-lg">
+            <p className="text-muted-foreground mb-8 leading-relaxed">
               Have a question or just want to say hi? I'm always open to discussing new opportunities, creative ideas, or just connecting.
             </p>
 
@@ -111,7 +111,7 @@ export function Contact() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <form onSubmit={handleSubmit} className="bg-card/50 p-6 rounded-2xl border border-border space-y-4">
+            <form onSubmit={handleSubmit} className="bg-card/30 backdrop-blur-sm p-6 rounded-2xl border border-border/50 space-y-4">
               <Input
                 name="name"
                 type="text"
@@ -142,7 +142,7 @@ export function Contact() {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-purple-500 hover:bg-purple-600 text-white rounded-xl h-12 text-base font-medium"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl h-12 text-base font-medium"
               >
                 {isSubmitting ? (
                   "Sending..."

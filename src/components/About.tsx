@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { GraduationCap, Award, Network } from "lucide-react";
+import { GraduationCap, Calendar, MapPin } from "lucide-react";
 import profileImg from "@/assets/profile.png";
 
 export function About() {
@@ -11,171 +11,137 @@ export function About() {
   return (
     <section id="about" className="py-20 relative" ref={ref}>
       <div className="container mx-auto px-4">
-        <div className="flex gap-8">
-          {/* Vertical accent line */}
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="mb-4"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold">About Me</h2>
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-muted-foreground mb-2"
+        >
+          A glimpse into who I am and what drives me.
+        </motion.p>
+
+        <motion.div
+          initial={{ width: 0 }}
+          animate={isInView ? { width: 60 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="h-1 bg-primary rounded-full mb-12"
+        />
+
+        {/* Avatar centered */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="relative flex justify-center mb-16"
+        >
           <motion.div
-            initial={{ height: 0 }}
-            animate={isInView ? { height: "100%" } : {}}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="w-1 bg-primary rounded-full hidden md:block flex-shrink-0"
-          />
+            animate={{ y: [0, -15, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            className="relative"
+          >
+            <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl" />
+            <img 
+              src={profileImg} 
+              alt="Vinodhan - Full Stack Developer" 
+              className="relative z-10 w-[300px] h-[300px] object-contain"
+            />
+          </motion.div>
+        </motion.div>
 
-          <div className="flex-1">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6 }}
-              className="mb-12"
-            >
-              <span className="text-muted-foreground text-sm font-medium tracking-wider uppercase">
-                INTRODUCTION
-              </span>
-              <h2 className="text-5xl md:text-6xl font-bold mt-2">About.</h2>
-            </motion.div>
+        {/* Education Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mb-4"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold">Education</h2>
+        </motion.div>
 
-            <div className="space-y-12">
-              {/* Avatar */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative flex justify-center"
-              >
-                <motion.div
-                  animate={{ y: [0, -15, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  className="relative"
-                >
-                  <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl" />
-                  <img 
-                    src={profileImg} 
-                    alt="Vinodhan - Full Stack Developer" 
-                    className="relative z-10 w-[350px] h-[350px] object-contain"
-                  />
-                </motion.div>
-              </motion.div>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.45 }}
+          className="text-muted-foreground mb-2"
+        >
+          Formal academics focusing on core computing foundations.
+        </motion.p>
 
-              {/* Education and Achievements - Side by Side */}
-              <div className="grid lg:grid-cols-2 gap-6">
-                {/* Education Card */}
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.8, delay: 0.3 }}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="bg-card/50 backdrop-blur-sm p-8 rounded-2xl border border-border hover:border-primary hover:shadow-[0_0_35px_rgba(var(--primary-rgb),0.25)] transition-all"
-                >
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-2 bg-primary/10 rounded-lg">
-                      <GraduationCap className="text-primary" size={24} />
-                    </div>
-                    <h3 className="text-2xl font-bold">Education</h3>
-                  </div>
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-semibold text-foreground">Bachelor of Computer Science and Engineering</h4>
-                      <p className="text-muted-foreground text-sm">
-                        Knowledge Institute of Technology (Up to 4th Semester)
-                      </p>
-                      <p className="text-muted-foreground text-sm">7.5 CGPA</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">Higher Secondary Education (12th)</h4>
-                      <p className="text-muted-foreground text-sm">
-                        Jayarani Matric Hr. Sec. School
-                      </p>
-                      <p className="text-muted-foreground text-sm">66%</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">Secondary Education (10th)</h4>
-                      <p className="text-muted-foreground text-sm">
-                        Sri Vidya Mandir Hr. Sec. School, Salem
-                      </p>
-                      <p className="text-muted-foreground text-sm">75%</p>
-                    </div>
-                  </div>
-                </motion.div>
+        <motion.div
+          initial={{ width: 0 }}
+          animate={isInView ? { width: 60 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="h-1 bg-primary rounded-full mb-8"
+        />
 
-                {/* Achievements Card */}
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="bg-card/50 backdrop-blur-sm p-8 rounded-2xl border border-border hover:border-primary hover:shadow-[0_0_35px_rgba(var(--primary-rgb),0.25)] transition-all"
-                >
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-2 bg-primary/10 rounded-lg">
-                      <Award className="text-primary" size={24} />
-                    </div>
-                    <h3 className="text-2xl font-bold">Achievements</h3>
-                  </div>
-                  <div className="space-y-3">
-                    <div>
-                      <h4 className="font-semibold text-foreground">Certifications</h4>
-                      <p className="text-muted-foreground text-sm">• Prompt Engineering – Great Learning</p>
-                      <p className="text-muted-foreground text-sm">• Java Programming – Thinkverge</p>
-                      <p className="text-muted-foreground text-sm">• AI for Beginners – HP Foundation 2025</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">Hackathon Excellence</h4>
-                      <p className="text-muted-foreground text-sm">• Special Prize – AARAM'25 UX Designathon (Cybernaut) – Recognized for creativity and innovation in a 24-hour UI/UX design competition</p>
-                      <p className="text-muted-foreground text-sm">• Finalist in Urban Vision Hackathon 2025</p>
-                      <p className="text-muted-foreground text-sm">• Finalist in BNKHUB – Led AI development team delivering production-style GenAI solution</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">Research & Publication</h4>
-                      <p className="text-muted-foreground text-sm">• Published paper in the domain of multimodal AI</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">Leadership</h4>
-                      <p className="text-muted-foreground text-sm">• Secretary – Rotaract Club</p>
-                      <p className="text-muted-foreground text-sm">• Campus Google Student Ambassador</p>
-                    </div>
-                  </div>
-                </motion.div>
+        {/* Education Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.55 }}
+          className="bg-card/30 backdrop-blur-sm p-6 rounded-2xl border border-border/50 relative"
+        >
+          {/* Decorative circles */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-2 border-muted-foreground/30" />
+          
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="flex items-start gap-4">
+              <div className="p-2 bg-primary/10 rounded-lg mt-1">
+                <GraduationCap className="text-primary" size={24} />
               </div>
-
-              {/* Experience Card - Full Width */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="bg-card/50 backdrop-blur-sm p-8 rounded-2xl border border-border hover:border-primary hover:shadow-[0_0_35px_rgba(var(--primary-rgb),0.25)] transition-all"
-              >
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2 bg-primary/10 rounded-lg">
-                    <Network className="text-primary" size={24} />
-                  </div>
-                  <h3 className="text-2xl font-bold">Experience</h3>
-                </div>
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-semibold text-foreground">n8n Automation Experience</h4>
-                    <p className="text-muted-foreground text-sm">
-                      Built AI-powered n8n automation workflows using LLMs for HR and communication use cases, integrating APIs and webhooks to deliver scalable pipelines that reduce manual workload and improve operational efficiency.
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground">Full Stack Developer Intern</h4>
-                    <p className="text-muted-foreground text-sm mb-1">
-                      MEE Technologies
-                    </p>
-                    <p className="text-muted-foreground text-sm">
-                      Engaged in full-stack development, contributing to both front-end and back-end solutions.
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground">Freelance Developer</h4>
-                    <p className="text-muted-foreground text-sm">
-                      Specialized in delivering front-end, back-end, and Automation solutions to clients.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
+              <div>
+                <h3 className="text-xl font-bold text-foreground">Bachelor of Computer Science and Engineering</h3>
+                <p className="text-primary">Knowledge Institute of Technology</p>
+                <p className="text-muted-foreground text-sm mt-1">CGPA: 7.5 (Till 4th Sem)</p>
+              </div>
+            </div>
+            
+            <div className="flex flex-wrap gap-3 ml-14 md:ml-0">
+              <span className="flex items-center gap-2 px-4 py-2 bg-card/50 border border-border rounded-full text-sm text-muted-foreground">
+                <Calendar size={14} />
+                2023 – 2027
+              </span>
+              <span className="flex items-center gap-2 px-4 py-2 bg-card/50 border border-border rounded-full text-sm text-muted-foreground">
+                <MapPin size={14} />
+                Salem, India
+              </span>
             </div>
           </div>
+        </motion.div>
+
+        {/* Additional Education - Smaller cards */}
+        <div className="grid md:grid-cols-2 gap-4 mt-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="bg-card/30 backdrop-blur-sm p-5 rounded-2xl border border-border/50"
+          >
+            <h4 className="font-semibold text-foreground">Higher Secondary Education (12th)</h4>
+            <p className="text-primary text-sm">Jayarani Matric Hr. Sec. School</p>
+            <p className="text-muted-foreground text-sm">66%</p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.65 }}
+            className="bg-card/30 backdrop-blur-sm p-5 rounded-2xl border border-border/50"
+          >
+            <h4 className="font-semibold text-foreground">Secondary Education (10th)</h4>
+            <p className="text-primary text-sm">Sri Vidya Mandir Hr. Sec. School, Salem</p>
+            <p className="text-muted-foreground text-sm">75%</p>
+          </motion.div>
         </div>
       </div>
     </section>
