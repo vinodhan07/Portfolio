@@ -29,6 +29,7 @@ export function Contact() {
     const email = formData.get("email") as string;
     const message = formData.get("message") as string;
 
+    // Basic validation
     if (!name.trim() || !email.trim() || !message.trim()) {
       toast({
         title: "Please fill all fields",
@@ -63,18 +64,17 @@ export function Contact() {
             initial={{ opacity: 0, x: -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="bg-card/50 backdrop-blur-sm p-8 rounded-2xl border border-border"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-2">Get in</h2>
             <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">Touch</h2>
             
-            <p className="text-muted-foreground mb-10">
+            <p className="text-muted-foreground mb-12 max-w-lg">
               Have a question or just want to say hi? I'm always open to discussing new opportunities, creative ideas, or just connecting.
             </p>
 
             <div className="mb-8">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-background/50 border border-border flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center">
                   <Mail className="text-primary" size={20} />
                 </div>
                 <div>
@@ -96,7 +96,7 @@ export function Contact() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-full bg-background/50 border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+                  className="w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors"
                   aria-label={social.label}
                 >
                   <social.icon size={20} />
@@ -111,7 +111,7 @@ export function Contact() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <form onSubmit={handleSubmit} className="bg-card/50 p-6 md:p-8 rounded-2xl border border-border space-y-4">
+            <form onSubmit={handleSubmit} className="bg-card/50 p-6 rounded-2xl border border-border space-y-4">
               <Input
                 name="name"
                 type="text"
