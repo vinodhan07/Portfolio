@@ -5,7 +5,7 @@ import avatarImg from "@/assets/avatar.png";
 import { useEffect, useState } from "react";
 
 export function Hero() {
-  const fullText = "An architect of the web, blending systems engineering with creative design. I don't just build applications; I craft resilient digital ecosystems that thrive under pressure.";
+  const fullText = "An architect of intelligent systems combining full-stack development and automation. I build LLM-powered agents, n8n workflows, and data-driven applications that transform complex processes into scalable, secure, and production-ready solutions.";
   const [displayText, setDisplayText] = useState("");
   const [isTypingComplete, setIsTypingComplete] = useState(false);
 
@@ -69,7 +69,7 @@ export function Hero() {
               className="flex items-center gap-3 mb-6 justify-center lg:justify-start"
             >
               <div className="w-2 h-2 rounded-full bg-primary" />
-              <span className="text-2xl md:text-3xl text-muted-foreground">Software Developer</span>
+              <span className="text-2xl md:text-3xl text-muted-foreground">Full-Stack & Automation Engineer</span>
             </motion.div>
 
             <motion.p
