@@ -87,24 +87,20 @@ export function About() {
           >
             <div className="grid lg:grid-cols-3 gap-8">
               {/* Content */}
-              <div className="lg:col-span-2 space-y-6">
+            <div className="lg:col-span-2 space-y-6">
                 <p className="text-muted-foreground leading-relaxed">
-                  I'm a Software Developer from Salem, India, crafting scalable, secure, and user-centric digital experiences.
+                  I'm a pre-final year Computer Science student from Salem, India, building AI-driven and automation-focused software systems.
                 </p>
                 
                 <p className="text-muted-foreground leading-relaxed">
-                  I specialize in building system architectures that perform under real-world load—whether it's distributed backends, cloud-native apps, or{" "}
-                  <span className="text-primary">intelligent tools powered by AI</span>.
-                </p>
-                
-                <p className="text-muted-foreground leading-relaxed">
-                  I thrive at the intersection of engineering, problem-solving, and product thinking. Every project I build is driven by clarity, precision, and a relentless commitment to grow beyond yesterday's limits.
+                  From LLM agents and n8n workflows to full-stack and{" "}
+                  <span className="text-primary">computer vision solutions</span>, I turn ideas into scalable, real-world products.
                 </p>
 
                 {/* Quote */}
                 <div className="border-l-4 border-primary pl-6 py-2 my-6">
                   <p className="text-foreground font-medium text-lg italic">
-                    "Turning ideas into systems. Turning systems into impact."
+                    "Turning intelligence into automation. Turning automation into impact."
                   </p>
                 </div>
 
