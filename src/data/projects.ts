@@ -6,40 +6,49 @@ export interface Project {
   demoUrl?: string;
   image?: string;
   featured?: boolean;
-  year?: string;
 }
 
 export const staticProjects: Project[] = [
   {
-    title: "BioKey",
-    description: "BioKey is a cloud-powered biometric media access system integrating a custom fingerprint device with secure authentication. I engineered a cross-platform architecture enabling encrypted, reliable, and low-latency media retrieval with seamless plug-and-play usability and scalable cloud deployment.",
-    tech: ["React Native", "React", "Node.js", "Redux", "Docker", "AWS EC2", "CI/CD", "MongoDB"],
-    repoUrl: "https://github.com/vinodhan07",
-    year: "2024",
+    title: "AI Virtual Voice Assistant",
+    description: "An intelligent voice-activated assistant powered by AI for seamless voice interactions and task automation.",
+    tech: ["Python", "AI/ML", "Speech Recognition", "NLP"],
+    repoUrl: "https://github.com/vinodhan07/AI_Virutal_VOICE_ASSIT",
     featured: true,
   },
   {
-    title: "AlgoLog",
-    description: "AlgoLog is a real-time coding analytics platform that aggregates student performance across multiple platforms using an automated scraping pipeline. It visualizes progress through interactive dashboards and generates insights to help institutions track outcomes at scale.",
-    tech: ["React", "Node.js", "Redux", "Tailwind CSS", "Web Scraping", "Cheerio", "Chart.js", "MongoDB"],
-    repoUrl: "https://github.com/vinodhan07",
-    year: "2025",
+    title: "Gen AI Model",
+    description: "A generative AI model implementation showcasing advanced machine learning capabilities and model training.",
+    tech: ["Python", "TensorFlow", "Machine Learning", "AI"],
+    repoUrl: "https://github.com/vinodhan07/Gen-AI-Model",
     featured: true,
   },
   {
-    title: "Swoosh",
-    description: "Swoosh is a secure peer-to-peer file-sharing platform enabling instant QR-based device pairing. It creates isolated, encrypted transfer rooms and uses a hybrid Electron + Spring microservice backend to ensure fast, reliable, and scalable file transfers.",
-    tech: ["React", "TailwindCSS", "Redux Toolkit", "Electron", "Spring Boot", "Spring Cloud", "Spring Security", "MySQL"],
-    repoUrl: "https://github.com/vinodhan07",
-    year: "2025",
+    title: "FinAI HackOps",
+    description: "Financial AI automation platform with intelligent data processing and analytics capabilities.",
+    tech: ["TypeScript", "PLpgSQL", "AI/ML", "Financial Tech"],
+    repoUrl: "https://github.com/vinodhan07/finai-hackops",
     featured: true,
   },
   {
-    title: "Vulnora AI",
-    description: "Vulnora AI is an offline, LLM-driven security scanner that detects deep, context-rich vulnerabilities and hardcoded secrets. It validates findings, generates actionable fixes, and supports multi-language analysis through a modular, cross-platform architecture.",
-    tech: ["Python", "FastAPI", "React", "Node.js", "Tailwind", "Ollama", "Llama 3", "Electron", "CLI"],
-    repoUrl: "https://github.com/vinodhan07",
-    year: "Ongoing",
-    featured: true,
+    title: "n8n AI Automation Agents",
+    description: "Automated workflow agents built with n8n for intelligent task orchestration and process automation.",
+    tech: ["JavaScript", "n8n", "Automation", "AI"],
+    repoUrl: "https://github.com/vinodhan07/n8n-AI-Automation-Agents",
+    featured: false,
+  },
+  {
+    title: "Translator-Model",
+    description: "A language translation model leveraging NLP techniques for accurate multilingual text conversion and real-time translation.",
+    tech: ["HTML", "CSS", "JavaScript", "NLP"],
+    repoUrl: "https://github.com/vinodhan07/Translator-Model",
+    featured: false,
+  },
+  {
+    title: "AI Agents Intensive Course",
+    description: "Comprehensive course materials on building AI agents, covering architecture, prompts, and agent design patterns.",
+    tech: ["Jupyter Notebook", "Python", "AI/ML", "Education"],
+    repoUrl: "https://github.com/vinodhan07/AI_Agents_Intensive_Course_with_Google",
+    featured: false,
   },
 ];
