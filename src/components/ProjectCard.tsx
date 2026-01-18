@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, Folder } from "lucide-react";
 import { Project } from "@/data/projects";
-import { Button } from "./ui/button";
 
 interface ProjectCardProps {
   project: Project;
@@ -15,69 +14,68 @@ export function ProjectCard({ project, index, isInView }: ProjectCardProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      whileHover={{ scale: 1.03, y: -4 }}
-      className="group bg-card/50 backdrop-blur-sm rounded-2xl border border-border hover:border-primary/50 hover:shadow-[0_0_40px_rgba(0,229,255,0.2)] transition-all duration-300 flex flex-col h-full"
+      whileHover={{ y: -4 }}
+      className="group bg-card/80 backdrop-blur-sm rounded-2xl border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 flex flex-col h-full"
       role="article"
       aria-label={`Project: ${project.title}`}
     >
       <div className="p-6 flex flex-col h-full">
-        {/* Title */}
-        <h3 className="text-xl font-semibold text-foreground mb-3 line-clamp-1">
-          {project.title}
-        </h3>
-
-        {/* Description */}
-        <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">
-          {project.description}
-        </p>
-
-        {/* Tech Tags */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          {project.tech.map((tech) => (
-            <span
-              key={tech}
-              className="text-primary text-xs font-mono px-2 py-1 bg-primary/10 rounded-md border border-primary/20"
-            >
-              #{tech}
-            </span>
-          ))}
-        </div>
-
-        {/* Action Buttons */}
-        <div className="flex gap-3 mt-auto">
-          <Button
-            asChild
-            variant="outline"
-            size="sm"
-            className="flex-1 border-primary/30 hover:bg-primary/10 hover:border-primary/50 transition-colors"
-          >
+        {/* Header with folder icon, title, and action icons */}
+        <div className="flex items-start justify-between mb-4">
+          <div className="flex items-center gap-3">
+            <div className="text-primary">
+              <Folder size={24} />
+            </div>
+            <h3 className="text-lg font-semibold text-foreground">
+              {project.title}
+            </h3>
+          </div>
+          <div className="flex items-center gap-2">
             <a
               href={project.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`View ${project.title} on GitHub`}
+              className="p-2 rounded-lg hover:bg-muted/50 transition-colors text-muted-foreground hover:text-foreground"
             >
-              <Github size={16} />
-              <span>Code</span>
+              <Github size={18} />
             </a>
-          </Button>
-          {project.demoUrl && (
-            <Button
-              asChild
-              size="sm"
-              className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-            >
+            {project.demoUrl && (
               <a
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`View ${project.title} demo`}
+                className="p-2 rounded-lg hover:bg-muted/50 transition-colors text-muted-foreground hover:text-foreground"
               >
-                <ExternalLink size={16} />
-                <span>Demo</span>
+                <ExternalLink size={18} />
               </a>
-            </Button>
-          )}
+            )}
+          </div>
+        </div>
+
+        {/* Year badge */}
+        <div className="mb-4">
+          <span className="text-xs font-medium text-muted-foreground px-2 py-1 border border-border rounded">
+            {project.featured ? "2024" : "2025"}
+          </span>
+        </div>
+
+        {/* Description */}
+        <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-grow">
+          {project.description}
+        </p>
+
+        {/* Tech Tags */}
+        <div className="flex flex-wrap gap-2 mt-auto">
+          {project.tech.map((tech) => (
+            <span
+              key={tech}
+              className="text-primary text-xs font-medium px-3 py-1 bg-primary/10 rounded-full border border-primary/20"
+            >
+              {tech}
+            </span>
+          ))}
         </div>
       </div>
     </motion.article>
