@@ -96,7 +96,7 @@ export function Hero() {
             >
               <Button
                 size="lg"
-                className="bg-card text-foreground border border-border hover:bg-muted/50 rounded-full px-6"
+                className="bg-white text-black border border-white hover:bg-white/90 rounded-full px-6"
                 onClick={() => scrollToSection("#projects")}
               >
                 View Projects
