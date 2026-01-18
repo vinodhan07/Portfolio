@@ -1,5 +1,6 @@
-import { Project } from "@/data/projects";
+import { motion } from "framer-motion";
 import { ProjectCard } from "./ProjectCard";
+import type { Project } from "@/data/projects";
 
 interface ProjectsGridProps {
   projects: Project[];
@@ -8,8 +9,11 @@ interface ProjectsGridProps {
 
 export function ProjectsGrid({ projects, isInView }: ProjectsGridProps) {
   return (
-    <div 
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr"
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={isInView ? { opacity: 1 } : {}}
+      transition={{ duration: 0.6, delay: 0.2 }}
+      className="grid grid-cols-1 md:grid-cols-2 gap-6"
       role="list"
       aria-label="Projects grid"
     >
@@ -22,6 +26,6 @@ export function ProjectsGrid({ projects, isInView }: ProjectsGridProps) {
           />
         </div>
       ))}
-    </div>
+    </motion.div>
   );
 }
