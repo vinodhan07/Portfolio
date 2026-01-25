@@ -108,7 +108,7 @@ export function Hero() {
                 className="border-border hover:bg-muted/50 rounded-full px-6"
                 asChild
               >
-                <a href="/resume.pdf" download>
+                <a href="/VInodhan FINAL 1.pdf" download>
                   <Download className="mr-2" size={18} />
                   Download Resume
                 </a>
@@ -148,9 +148,9 @@ export function Hero() {
             >
               <div className="w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl absolute inset-0" />
               <div className="relative z-10 w-[400px] h-[400px] flex items-center justify-center">
-                <img 
-                  src={avatarImg} 
-                  alt="Vinodhan Avatar" 
+                <img
+                  src={avatarImg}
+                  alt="Vinodhan Avatar"
                   className="w-[420px] h-[420px] object-contain"
                 />
               </div>
