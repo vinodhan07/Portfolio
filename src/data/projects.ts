@@ -10,11 +10,10 @@ export interface Project {
 
 export const staticProjects: Project[] = [
   {
-    title: "AI Virtual Voice Assistant",
-    description: "An intelligent voice-activated assistant powered by AI for seamless voice interactions and task automation.",
-    tech: ["Python", "AI/ML", "Speech Recognition", "NLP"],
-    repoUrl: "https://github.com/vinodhan07/AI_Virutal_VOICE_ASSIT",
-    featured: true,
+   title: "AI-Based Image Similarity & Web Scraping Tool",
+   description: "An AI-powered image similarity system built using OpenCLIP embeddings and FAISS vector search to enable high-speed visual matching across large datasets. Includes automated web scraping pipelines, metadata processing, and a full-stack FastAPI + React implementation for real-time similarity comparison.",
+   tech: ["Python", "OpenCLIP", "FAISS", "FastAPI", "React.js", "Web Scraping", "SQLite"],repoUrl: "https://github.com/vinodhan07/AI-Based-Image-Similarity-WEB-Scrapping-tool.git",
+   featured: true,
   },
   {
     title: "Gen AI Model",
@@ -38,11 +37,11 @@ export const staticProjects: Project[] = [
     featured: false,
   },
   {
-    title: "Translator-Model",
-    description: "A language translation model leveraging NLP techniques for accurate multilingual text conversion and real-time translation.",
-    tech: ["HTML", "CSS", "JavaScript", "NLP"],
-    repoUrl: "https://github.com/vinodhan07/Translator-Model",
-    featured: false,
+    title: "Real-Time Annotation Using Videos",
+    description: "Developed a real-time video annotation system that captures and labels video frames on the fly, enabling efficient labeling workflows for computer vision model training and dataset generation.",
+    tech: ["Python", "OpenCV", "Real-Time Video Processing", "Computer Vision", "Machine Learning", "GUI/Visualization"],
+    repoUrl: "https://github.com/vinodhan07/REAL-TIME-ANNOTATION-USING-VIDEOS.git",
+    featured: true,
   },
   {
     title: "AI Agents Intensive Course",

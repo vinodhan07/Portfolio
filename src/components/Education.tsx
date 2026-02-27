@@ -53,7 +53,7 @@ export function Education() {
                 <div>
                   <h3 className="text-xl font-bold text-foreground">Bachelor of Computer Science and Engineering</h3>
                   <p className="text-primary">Knowledge Institute of Technology</p>
-                  <p className="text-muted-foreground text-sm mt-1">CGPA: 7.5 (Till 4th Sem)</p>
+                  <p className="text-muted-foreground text-sm mt-1">CGPA: 7.7 (Till 5th Sem)</p>
                 </div>
               </div>
               

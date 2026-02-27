@@ -57,7 +57,7 @@ export function ProjectCard({ project, index, isInView }: ProjectCardProps) {
         {/* Year badge */}
         <div className="mb-4">
           <span className="text-xs font-medium text-muted-foreground px-2 py-1 border border-border rounded">
-            {project.featured ? "2024" : "2025"}
+            {project.featured ? "2026" : "2025"}
           </span>
         </div>
 

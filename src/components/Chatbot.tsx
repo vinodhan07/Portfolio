@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, FileText, Briefcase, Mail, User, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { portfolioData } from "@/data/portfolioData";
 
 type Message = { role: "user" | "assistant"; content: string };
 
@@ -15,27 +16,49 @@ const presets = [
   { label: "Resume", Icon: FileText, query: "How can I download the resume?" },
 ];
 
-const SYSTEM_PROMPT = `You are VINODHAN V A's AI assistant. Be concise.
-About: Full Stack Developer & AI enthusiast at Knowledge Institute of Technology (B.Tech IT, 2023-2027, 7.5 CGPA). Google Student Ambassador.
-Skills: Python, Java, JavaScript, TypeScript, React, Node.js, TensorFlow, NLP, RAG, n8n, Docker, AWS
-Projects: Translator-Model (NLP), Automated Report Generation (AI), Multi-Agent RAG System
-Links (use markdown): Resume: [Download](/VInodhan FINAL 1.pdf), Email: [vinovb21@gmail.com](mailto:vinovb21@gmail.com), LinkedIn: [Profile](https://linkedin.com/in/vavinodhan), GitHub: [vinodhan07](https://github.com/vinodhan07)`;
+const SYSTEM_PROMPT = `You are VINODHAN V A's personal AI assistant. 
 
-const fallbacks: Record<string, string> = {
-  about: "Vinodhan V A is a Full Stack Developer & AI enthusiast at Knowledge Institute of Technology. Google Student Ambassador with expertise in React, Node.js, Python, and AI/ML.",
-  project: "Projects:\n• **Translator-Model** - NLP translation\n• **Automated Report Generation** - AI automation\n• **Multi-Agent RAG System**",
-  contact: "📧 [vinovb21@gmail.com](mailto:vinovb21@gmail.com)\n💼 [LinkedIn](https://linkedin.com/in/vavinodhan)\n🐙 [GitHub](https://github.com/vinodhan07)",
-  resume: "Download resume: [Click here](/VInodhan FINAL 1.pdf)",
-  default: "Ask me about Vinodhan's background, projects, or contact info!",
-};
+STRICT RULES:
+1. ONLY answer questions related to Vinodhan, his portfolio, his skills, his projects, his education, or his contact information.
+2. If a user asks anything unrelated to Vinodhan or his portfolio (e.g., general knowledge, jokes, weather, math, programming help not related to his projects, etc.), you MUST politely refuse to answer. 
+   Example refusal: "I'm sorry, I am specifically designed to answer questions about Vinodhan's portfolio and professional background. Would you like to know about his projects or skills instead?"
+3. Keep responses concise and professional.
+4. Use markdown for links.
+
+PORTFOLIO DATA:
+${JSON.stringify(portfolioData, null, 2)}
+
+LINKS:
+Email: [${portfolioData.contact.email}](mailto:${portfolioData.contact.email})
+LinkedIn: [Profile](${portfolioData.contact.linkedin})
+GitHub: [vinodhan07](${portfolioData.contact.github})
+Resume: [Download Portfolio/Resume](${portfolioData.contact.resume})`;
 
 const getFallback = (q: string): string => {
   const lower = q.toLowerCase();
-  if (lower.includes("about") || lower.includes("who")) return fallbacks.about;
-  if (lower.includes("project") || lower.includes("work")) return fallbacks.project;
-  if (lower.includes("contact") || lower.includes("email")) return fallbacks.contact;
-  if (lower.includes("resume") || lower.includes("cv")) return fallbacks.resume;
-  return fallbacks.default;
+  if (lower.includes("about") || lower.includes("who")) {
+    return `Vinodhan V A is a ${portfolioData.personalInfo.title} based in ${portfolioData.personalInfo.location}. He is currently pursuing ${portfolioData.personalInfo.education}.`;
+  }
+  if (lower.includes("project") || lower.includes("work")) {
+    const projectList = portfolioData.projects.map(p => `• **${p.title}** - ${p.description}`).join('\n');
+    return `Vinodhan has worked on several projects, including:\n${projectList}`;
+  }
+  if (lower.includes("skills") || lower.includes("expertise")) {
+    return `Vinodhan's skills include:\n${portfolioData.skills.tools.join(', ')}. He specializes in ${portfolioData.skills.categories.join(', ')}.`;
+  }
+  if (lower.includes("cgpa") || lower.includes("score") || lower.includes("grade")) {
+    return `Vinodhan's current CGPA is ${portfolioData.personalInfo.cgpa}.`;
+  }
+  if (lower.includes("contact") || lower.includes("email")) {
+    return `You can contact Vinodhan at:
+📧 [${portfolioData.contact.email}](mailto:${portfolioData.contact.email})
+💼 [LinkedIn](${portfolioData.contact.linkedin})
+🐙 [GitHub](${portfolioData.contact.github})`;
+  }
+  if (lower.includes("resume") || lower.includes("cv")) {
+    return `Download resume: [Click here](${portfolioData.contact.resume})`;
+  }
+  return "I am Vinodhan's AI assistant. I can only help you with information regarding his portfolio, skills, and projects. What would you like to know?";
 };
 
 const renderMarkdownLinks = (text: string) =>
