@@ -4,7 +4,7 @@ export const portfolioData = {
         title: "Full Stack Developer & AI Enthusiast",
         location: "Salem, India",
         education: "B.Tech in Computer Science and Engineering (2023-2027) at Knowledge Institute of Technology",
-        cgpa: "7.5 (Till 4th Sem)",
+        cgpa: "7.7 (Till 5th Sem)",
         tagline: "CODE. SCALE. SECURE. REPEAT.",
         quote: "Turning intelligence into automation. Turning automation into impact.",
         summary: "Pre-final year Computer Science student building AI-driven and automation-focused software systems. Expert in LLM agents, n8n workflows, full-stack development, and computer vision solutions.",
