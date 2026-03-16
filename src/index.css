@@ -20,6 +20,8 @@ All colors MUST be HSL.
     --primary: 84 100% 67%;
     --primary-foreground: 222 47% 11%;
     --primary-rgb: 178, 255, 86;
+    --secondary-rgb: 210, 40, 96;
+    --accent-rgb: 178, 255, 86;
 
     --secondary: 210 40% 96%;
     --secondary-foreground: 222 47% 11%;
@@ -37,38 +39,40 @@ All colors MUST be HSL.
     --input: 214 32% 91%;
     --ring: 84 100% 67%;
 
-    --radius: 1rem;
+    --radius: 1.5rem;
 
     /* Portfolio specific colors */
     --hero-gradient-start: 210 40% 98%;
     --hero-gradient-end: 220 30% 95%;
-    --glass-bg: 0 0% 100% / 0.6;
+    --glass-bg: 0 0% 100% / 0.4;
     --accent-glow: 84 100% 67% / 0.15;
     
     /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-smooth: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .dark {
-    --background: 240 22% 5%;
+    --background: 240 22% 4%;
     --foreground: 240 10% 97%;
 
-    --card: 0 0% 100% / 0.04;
+    --card: 0 0% 100% / 0.03;
     --card-foreground: 240 10% 97%;
 
-    --popover: 240 22% 8%;
+    --popover: 240 22% 6%;
     --popover-foreground: 240 10% 97%;
 
     --primary: 187 100% 50%;
     --primary-foreground: 240 22% 5%;
     --primary-rgb: 0, 229, 255;
+    --secondary-rgb: 255, 71, 148;
+    --accent-rgb: 0, 229, 255;
 
     --secondary: 328 100% 64%;
     --secondary-foreground: 240 10% 97%;
 
-    --muted: 249 10% 72%;
-    --muted-foreground: 249 10% 72%;
+    --muted: 240 10% 70%;
+    --muted-foreground: 240 10% 70%;
 
     --accent: 187 100% 50%;
     --accent-foreground: 240 22% 5%;
@@ -76,14 +80,14 @@ All colors MUST be HSL.
     --destructive: 0 84% 60%;
     --destructive-foreground: 240 10% 97%;
 
-    --border: 240 15% 15%;
-    --input: 240 15% 15%;
+    --border: 240 15% 12%;
+    --input: 240 15% 12%;
     --ring: 187 100% 50%;
 
     /* Portfolio specific colors */
-    --hero-gradient-start: 240 22% 5%;
-    --hero-gradient-end: 250 30% 8%;
-    --glass-bg: 0 0% 100% / 0.04;
+    --hero-gradient-start: 240 22% 4%;
+    --hero-gradient-end: 250 30% 6%;
+    --glass-bg: 0 0% 100% / 0.03;
     --accent-glow: 187 100% 50% / 0.12;
     --success: 152 100% 74%;
   }

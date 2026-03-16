@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import antigravityLogo from "@/assets/antigravity-logo.png";
+import { ParallaxSection, TextReveal, TiltCard } from "./animations";
 
 const expertisePoints = [
   "Proficient in building interactive, user-friendly web and mobile applications using modern frameworks and libraries.",
@@ -39,62 +40,72 @@ export function Skills() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="skills" className="py-20" ref={ref}>
-      <div className="container mx-auto px-4 max-w-6xl">
+    <section id="skills" className="py-24 relative overflow-hidden" ref={ref}>
+      <ParallaxSection speed={0.05} className="container mx-auto px-4 max-w-6xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <span className="text-gray-400 text-sm font-light tracking-[0.3em] uppercase">
+          <span className="text-primary text-sm font-bold tracking-[0.4em] uppercase mb-4 block">
             EXPERTISE
           </span>
-          <h2 className="text-5xl md:text-7xl font-bold mt-2 mb-8">SKILLS.</h2>
-          <p className="text-gray-300 text-lg leading-relaxed max-w-5xl">
-            As a versatile full-stack developer, I specialize in building scalable web and mobile applications using modern technologies. Proficient in HTML, CSS, JavaScript, React.js, and TypeScript for front-end development, with expertise in Python, Java, and R for back-end solutions. Experienced with AI tools including Docker, Ollama, N8n AI Agent, and Flutter for cross-platform development. I focus on delivering clean, maintainable code while ensuring seamless user experiences and robust application performance.
-          </p>
+          <h2 className="text-5xl md:text-7xl font-black mt-2 mb-8 tracking-tighter">
+            <TextReveal splitBy="chars" variant="slide">SKILLS.</TextReveal>
+          </h2>
+          <div className="max-w-4xl">
+            <TextReveal variant="blur" delay={0.4} className="text-muted-foreground text-xl leading-relaxed" splitBy="words">
+              As a versatile full-stack developer, I specialize in building scalable web and mobile applications using modern technologies. Proficient in HTML, CSS, JavaScript, React.js, and TypeScript for front-end development, with expertise in Python, Java, and R for back-end solutions. Experienced with AI tools including Docker, Ollama, N8n AI Agent, and Flutter for cross-platform development. I focus on delivering clean, maintainable code while ensuring seamless user experiences and robust application performance.
+            </TextReveal>
+          </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
           {expertisePoints.map((point, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-card/50 backdrop-blur-sm p-6 rounded-2xl border border-border hover:border-primary/50 hover:shadow-[0_0_25px_rgba(var(--primary-rgb),0.15)] transition-all duration-300 hover:scale-105"
+              transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
             >
-              <div className="flex items-start gap-3">
-                <span className="text-primary text-xl mt-1">•</span>
-                <p className="text-gray-300 text-sm leading-relaxed">{point}</p>
-              </div>
+              <TiltCard tiltStrength={5} className="h-full">
+                <div className="bg-card/30 backdrop-blur-md p-8 rounded-2xl border border-border/50 hover:border-primary/50 transition-all duration-500 h-full flex flex-col gap-4">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg">
+                    {index + 1}
+                  </div>
+                  <p className="text-gray-200 text-base leading-relaxed font-medium">{point}</p>
+                </div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex flex-wrap justify-center gap-4"
+          transition={{ duration: 0.8, delay: 1 }}
+          className="flex flex-wrap justify-center gap-6 p-10 bg-card/10 backdrop-blur-sm rounded-3xl border border-border/20"
         >
           {techIcons.map((tech, index) => (
             <motion.div
               key={tech.name}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.3, delay: 0.6 + index * 0.05 }}
-              whileHover={{ scale: 1.15, y: -8 }}
-              className="bg-card/50 backdrop-blur-sm w-20 h-20 rounded-2xl border border-border/50 flex flex-col items-center justify-center gap-2 hover:border-primary hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.3)] transition-all group"
-              title={tech.name}
+              transition={{ duration: 0.4, delay: 1.2 + index * 0.04 }}
+              className="group"
             >
-              <img src={tech.logo} alt={tech.name} className="w-10 h-10 object-contain" />
-              <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors">{tech.name}</span>
+              <TiltCard tiltStrength={15} className="w-24 h-24">
+                <div className="bg-background/80 backdrop-blur-md w-full h-full rounded-2xl border border-border/40 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.3)] transition-all group overflow-hidden relative">
+                  <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <img src={tech.logo} alt={tech.name} className="w-10 h-10 object-contain relative z-10 filter group-hover:grayscale-0 grayscale transition-all duration-300" />
+                  <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest group-hover:text-primary transition-colors relative z-10">{tech.name}</span>
+                </div>
+              </TiltCard>
             </motion.div>
           ))}
         </motion.div>
-      </div>
+      </ParallaxSection>
     </section>
   );
 }

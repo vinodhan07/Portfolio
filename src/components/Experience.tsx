@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Calendar, Briefcase, Workflow, Code } from "lucide-react";
+import { ParallaxSection, TextReveal, TiltCard } from "./animations";
 
 interface ExperienceItem {
   title: string;
@@ -37,79 +38,81 @@ export function Experience() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="experience" className="py-20 relative" ref={ref}>
-      <div className="container mx-auto px-4">
+    <section id="experience" className="py-24 relative overflow-hidden" ref={ref}>
+      <ParallaxSection speed={0.12} className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-4"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold">Experience</h2>
-        </motion.div>
+        <div className="mb-4">
+          <h2 className="text-5xl md:text-6xl font-black tracking-tight">
+            <TextReveal splitBy="chars" variant="slide">Experience</TextReveal>
+          </h2>
+        </div>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, x: -20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-muted-foreground mb-2"
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-muted-foreground mb-4 text-lg"
         >
           My professional journey and contributions to impactful teams.
         </motion.p>
 
         <motion.div
           initial={{ width: 0 }}
-          animate={isInView ? { width: 60 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="h-1 bg-primary rounded-full mb-12"
+          animate={isInView ? { width: 80 } : {}}
+          transition={{ duration: 0.8, delay: 0.4, ease: "circOut" }}
+          className="h-1.5 bg-primary rounded-full mb-16"
         />
 
-        {/* Decorative floating circles */}
-        <div className="relative">
-          <div className="absolute top-4 left-1/2 w-3 h-3 rounded-full bg-primary" />
-          <div className="absolute top-8 left-[55%] w-4 h-4 rounded-full border-2 border-muted-foreground/30" />
-        </div>
-
         {/* Timeline */}
-        <div className="relative mt-16">
+        <div className="relative mt-16 max-w-4xl mx-auto">
+          {/* Vertical line with gradient */}
+          <div className="absolute left-[20px] top-4 bottom-4 w-1 bg-gradient-to-b from-primary via-primary/50 to-transparent rounded-full opacity-30" />
+          
           {experiences.map((exp, index) => (
             <motion.div
               key={exp.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.3 + index * 0.1 }}
-              className="relative pl-12 pb-12 last:pb-0"
+              initial={{ opacity: 0, x: -30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.5 + index * 0.15 }}
+              className="relative pl-16 pb-16 last:pb-0"
             >
-              {/* Timeline line */}
-              {index < experiences.length - 1 && (
-                <div className="absolute left-[9px] top-10 bottom-0 w-0.5 bg-primary/50" />
-              )}
-              
-              {/* Timeline dot */}
-              <div className="absolute left-0 top-2 w-5 h-5 rounded-full bg-primary border-4 border-background" />
+              {/* Timeline marker */}
+              <div className="absolute left-0 top-2 z-10">
+                <motion.div 
+                  initial={{ scale: 0 }}
+                  animate={isInView ? { scale: 1 } : {}}
+                  transition={{ type: "spring", stiffness: 300, damping: 15, delay: 0.8 + index * 0.15 }}
+                  className="w-10 h-10 rounded-2xl bg-primary flex items-center justify-center text-primary-foreground shadow-[0_0_20px_rgba(var(--primary-rgb),0.5)]"
+                >
+                  <exp.icon size={20} />
+                </motion.div>
+                <div className="absolute inset-0 bg-primary blur-lg opacity-40 rounded-2xl -z-10" />
+              </div>
               
               {/* Card */}
-              <div className="bg-card/30 backdrop-blur-sm p-6 rounded-2xl border border-border/50 hover:border-primary/50 transition-colors">
-                <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-foreground">{exp.title}</h3>
-                    <p className="text-primary mb-3">{exp.company}</p>
-                    <p className="text-muted-foreground text-sm leading-relaxed">{exp.description}</p>
+              <TiltCard tiltStrength={3} perspective={1200}>
+                <div className="bg-card/20 backdrop-blur-xl p-8 rounded-3xl border border-border/40 hover:border-primary/40 transition-all duration-500 group shadow-xl">
+                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
+                    <div className="flex-1">
+                      <div className="mb-2">
+                        {exp.duration && (
+                          <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-full text-xs font-bold text-primary uppercase tracking-wider mb-4">
+                            <Calendar size={12} />
+                            {exp.duration}
+                          </span>
+                        )}
+                      </div>
+                      <h3 className="text-2xl font-black text-foreground mb-2 group-hover:text-primary transition-colors">{exp.title}</h3>
+                      <p className="text-primary/70 font-bold tracking-wide uppercase text-sm mb-4">{exp.company}</p>
+                      <p className="text-muted-foreground leading-relaxed text-base">{exp.description}</p>
+                    </div>
                   </div>
-                  
-                  {exp.duration && (
-                    <span className="flex items-center gap-2 px-4 py-2 bg-card/50 border border-border rounded-full text-sm text-muted-foreground whitespace-nowrap">
-                      <Calendar size={14} />
-                      {exp.duration}
-                    </span>
-                  )}
                 </div>
-              </div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>
-      </div>
+      </ParallaxSection>
     </section>
   );
 }

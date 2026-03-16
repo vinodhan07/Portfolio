@@ -4,6 +4,7 @@ import { MessageCircle, X, Send, FileText, Briefcase, Mail, User, Loader2 } from
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { portfolioData } from "@/data/portfolioData";
+import { MagneticButton, TiltCard } from "./animations";
 
 type Message = { role: "user" | "assistant"; content: string };
 
@@ -115,69 +116,109 @@ export const Chatbot = () => {
 
   return (
     <>
-      <motion.button
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg flex items-center justify-center"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
-      </motion.button>
+      <div className="fixed bottom-6 right-6 z-50">
+        <MagneticButton strength={0.4}>
+          <motion.button
+            onClick={() => setIsOpen(!isOpen)}
+            className="w-14 h-14 rounded-full bg-gradient-to-r from-primary to-primary/80 text-primary-foreground shadow-[0_10px_30px_-10px_rgba(var(--primary-rgb),0.5)] flex items-center justify-center border border-white/10"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
+          </motion.button>
+        </MagneticButton>
+      </div>
 
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-24 right-6 z-50 w-[360px] max-w-[calc(100vw-3rem)] bg-zinc-900 border border-zinc-700 rounded-2xl shadow-2xl overflow-hidden"
+            initial={{ opacity: 0, y: 20, scale: 0.95, filter: "blur(10px)" }}
+            animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+            exit={{ opacity: 0, y: 20, scale: 0.95, filter: "blur(10px)" }}
+            className="fixed bottom-24 right-6 z-50 w-[380px] max-w-[calc(100vw-3rem)]"
           >
-            <div className="bg-gradient-to-r from-purple-600 to-blue-600 p-4">
-              <h3 className="text-white font-semibold">Chat with Vinodhan's AI</h3>
-              <p className="text-white/80 text-sm">Ask me anything!</p>
-            </div>
-
-            <div className="h-[280px] overflow-y-auto p-4 space-y-3">
-              {messages.map((msg, i) => (
-                <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                  <div className={`max-w-[85%] p-3 rounded-2xl text-sm ${msg.role === "user"
-                    ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-br-md"
-                    : "bg-zinc-800 text-zinc-100 rounded-bl-md border border-zinc-700"
-                    }`}>
-                    <span className="whitespace-pre-wrap [&_a]:text-purple-400 [&_a]:underline"
-                      dangerouslySetInnerHTML={{ __html: renderMarkdownLinks(msg.content) }} />
+            <TiltCard tiltStrength={2} className="w-full">
+              <div className="bg-zinc-900/90 backdrop-blur-2xl border border-white/10 rounded-[2rem] shadow-2xl overflow-hidden">
+                <div className="bg-gradient-to-r from-primary/20 to-primary/5 p-6 border-b border-white/5 relative overflow-hidden">
+                  <div className="relative z-10">
+                    <h3 className="text-white font-black tracking-tight flex items-center gap-2">
+                       <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                      Chat with Vinodhan's AI
+                    </h3>
+                    <p className="text-white/60 text-xs font-medium uppercase tracking-widest mt-1">Status: Online</p>
+                  </div>
+                  <div className="absolute top-0 right-0 p-4 opacity-10">
+                    <MessageCircle size={80} />
                   </div>
                 </div>
-              ))}
-              {isLoading && (
-                <div className="flex justify-start">
-                  <div className="bg-zinc-800 p-3 rounded-2xl rounded-bl-md border border-zinc-700 flex gap-1">
-                    {[0, 150, 300].map(d => <span key={d} className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: `${d}ms` }} />)}
+
+                <div className="h-[320px] overflow-y-auto p-6 space-y-4 custom-scrollbar">
+                  {messages.map((msg, i) => (
+                    <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+                      <div className={`max-w-[85%] p-4 rounded-2xl text-sm ${msg.role === "user"
+                        ? "bg-primary text-primary-foreground rounded-br-none font-medium shadow-lg"
+                        : "bg-zinc-800/80 text-zinc-100 rounded-bl-none border border-white/5"
+                        }`}>
+                        <span className="whitespace-pre-wrap [&_a]:text-primary [&_a]:underline [&_a]:font-bold"
+                          dangerouslySetInnerHTML={{ __html: renderMarkdownLinks(msg.content) }} />
+                      </div>
+                    </div>
+                  ))}
+                  {isLoading && (
+                    <div className="flex justify-start">
+                      <div className="bg-zinc-800/80 p-4 rounded-2xl rounded-bl-none border border-white/5 flex gap-1.5 items-center">
+                        {[0, 150, 300].map(d => (
+                          <motion.span 
+                            key={d} 
+                            className="w-1.5 h-1.5 bg-primary/60 rounded-full"
+                            animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }}
+                            transition={{ repeat: Infinity, duration: 1, delay: d/1000 }}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  <div ref={endRef} />
+                </div>
+
+                <div className="p-6 border-t border-white/5 bg-zinc-900/50">
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {presets.map(({ label, Icon, query }) => (
+                      <MagneticButton key={label} strength={0.2}>
+                        <button onClick={() => handleSend(query)} disabled={isLoading}
+                          className="flex items-center gap-2 px-4 py-2 text-xs bg-zinc-800 hover:bg-zinc-700 text-zinc-300 rounded-xl border border-white/5 transition-all disabled:opacity-50 font-bold uppercase tracking-wider">
+                          <Icon size={12} className="text-primary" />{label}
+                        </button>
+                      </MagneticButton>
+                    ))}
+                  </div>
+                  <div className="flex gap-3 items-center">
+                    <div className="relative flex-1 group">
+                      <input 
+                        value={input} 
+                        onChange={e => setInput(e.target.value)}
+                        onKeyDown={e => e.key === "Enter" && handleSend(input)} 
+                        placeholder="Ask me something..."
+                        disabled={isLoading} 
+                        className="w-full pl-5 pr-12 py-4 rounded-2xl bg-zinc-800/80 text-zinc-100 text-sm placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-primary/40 disabled:opacity-50 border border-white/5 transition-all" 
+                      />
+                      <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                        <MagneticButton strength={0.3}>
+                          <Button 
+                            size="icon" 
+                            onClick={() => handleSend(input)} 
+                            disabled={isLoading || !input.trim()}
+                            className="rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 w-10 h-10 shadow-lg"
+                          >
+                            {isLoading ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
+                          </Button>
+                        </MagneticButton>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              )}
-              <div ref={endRef} />
-            </div>
-
-            <div className="p-3 border-t border-zinc-700 bg-zinc-800/50">
-              <div className="flex flex-wrap gap-2 mb-3">
-                {presets.map(({ label, Icon, query }) => (
-                  <button key={label} onClick={() => handleSend(query)} disabled={isLoading}
-                    className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-zinc-700 hover:bg-zinc-600 text-zinc-200 rounded-full disabled:opacity-50">
-                    <Icon size={12} />{label}
-                  </button>
-                ))}
               </div>
-              <div className="flex gap-2">
-                <input value={input} onChange={e => setInput(e.target.value)}
-                  onKeyDown={e => e.key === "Enter" && handleSend(input)} placeholder="Type a message..."
-                  disabled={isLoading} className="flex-1 px-4 py-2.5 rounded-full bg-zinc-700 text-zinc-100 text-sm placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-purple-500 disabled:opacity-50" />
-                <Button size="icon" onClick={() => handleSend(input)} disabled={isLoading || !input.trim()}
-                  className="rounded-full bg-gradient-to-r from-purple-600 to-blue-600">
-                  {isLoading ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
-                </Button>
-              </div>
-            </div>
+            </TiltCard>
           </motion.div>
         )}
       </AnimatePresence>
