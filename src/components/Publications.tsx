@@ -25,7 +25,7 @@ export function Publications() {
         <motion.p
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ amount: 0.2 }}
+          viewport={{ amount: 0.1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-muted-foreground mb-4 text-lg"
         >
@@ -35,7 +35,7 @@ export function Publications() {
         <motion.div
           initial={{ width: 0 }}
           whileInView={{ width: 80 }}
-          viewport={{ amount: 0.2 }}
+          viewport={{ amount: 0.1 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "circOut" }}
           className="h-1.5 bg-primary rounded-full mb-16"
         />
@@ -46,7 +46,7 @@ export function Publications() {
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ amount: 0.2 }}
+              viewport={{ amount: 0.1 }}
               transition={{ duration: 0.8, delay: 0.5 + index * 0.1 }}
             >
               <TiltCard tiltStrength={2}>
@@ -69,7 +69,7 @@ export function Publications() {
                       <p className="text-muted-foreground font-bold tracking-wide">{pub.journal}</p>
                     </div>
                     
-                    <MagneticButton strength={0.3}>
+                    <MagneticButton strength={0.3} className="relative z-20">
                       <Button
                         asChild
                         className="bg-primary text-primary-foreground hover:bg-primary/90 h-14 px-8 rounded-xl text-sm font-black uppercase tracking-widest flex items-center gap-3 transition-all shadow-[0_10px_30px_-10px_rgba(var(--primary-rgb),0.5)]"
