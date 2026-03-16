@@ -43,8 +43,8 @@ export function Hero() {
       className="min-h-screen flex items-center justify-center relative overflow-hidden bg-transparent transition-colors duration-500"
     >
       {/* Grid pattern overlay - Matching other themed sections */}
-      <div 
-        className="absolute inset-0 opacity-[0.03] dark:opacity-[0.02]" 
+      <div
+        className="absolute inset-0 opacity-[0.03] dark:opacity-[0.02]"
         style={{
           backgroundImage: `linear-gradient(to right, hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--foreground)) 1px, transparent 1px)`,
           backgroundSize: '40px 40px',
@@ -71,12 +71,12 @@ export function Hero() {
               <span className="text-muted-foreground text-lg md:text-xl font-medium">Hello, I'm</span>
             </motion.div>
 
-            <h1 className="text-[clamp(3rem,9vw,7.5rem)] font-black mb-4 tracking-[-0.07em] leading-[0.85] flex flex-col whitespace-nowrap">
+            <h1 className="text-[clamp(1.8rem,6vw,5rem)] font-black mb-6 tracking-[-0.05em] leading-[1.1] flex flex-row flex-wrap items-baseline gap-x-[0.3em]">
               <TextReveal delay={0.4} splitBy="chars" variant="slide" className="text-foreground">
                 VINODHAN
               </TextReveal>
               <TextReveal delay={0.8} splitBy="chars" variant="slide" className="text-primary/95">
-                V. A.
+                V.A
               </TextReveal>
             </h1>
 
@@ -121,7 +121,7 @@ export function Hero() {
                   <ArrowRight className="ml-2" size={20} />
                 </Button>
               </MagneticButton>
-              
+
               <MagneticButton strength={0.2}>
                 <Button
                   variant="outline"
@@ -152,7 +152,7 @@ export function Hero() {
                   Open to work
                 </span>
               </div>
-              
+
               <div className="flex items-center gap-2 text-muted-foreground/60 text-xs font-black uppercase tracking-widest">
                 <MapPin size={14} className="text-primary/60" />
                 <span>Salem, Tamil Nadu, India</span>

@@ -54,7 +54,7 @@ export function Header() {
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
             onClick={() => scrollToSection("#home")}
           >
-            <span className="text-primary font-black">V</span>INODHAN<span className="text-primary">.AI</span>
+            <span className="text-primary font-black">V</span>INODHAN<span className="text-primary">.ai</span>
           </motion.div>
 
           {/* Desktop Navigation */}

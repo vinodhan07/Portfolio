@@ -4,13 +4,7 @@ import { useRef } from "react";
 import antigravityLogo from "@/assets/antigravity-logo.png";
 import { ParallaxSection, TextReveal, TiltCard } from "./animations";
 
-const expertisePoints = [
-  "Proficient in building interactive, user-friendly web and mobile applications using modern frameworks and libraries.",
-  "Expert at integrating APIs and developing back-end solutions to support dynamic and scalable applications.",
-  "Focused on crafting clean, maintainable code to ensure long-term app performance and reliability.",
-  "Proficient in using version control systems like Git and deploying applications to cloud platforms, ensuring efficient collaboration and scalable, reliable delivery.",
-  "Strong understanding of UI/UX principles to deliver visually appealing, functional designs that align with user needs."
-];
+
 
 const techIcons = [
   { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
@@ -61,25 +55,7 @@ export function Skills() {
           </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
-          {expertisePoints.map((point, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
-            >
-              <TiltCard tiltStrength={5} className="h-full">
-                <div className="bg-card/30 backdrop-blur-md p-8 rounded-2xl border border-border/50 hover:border-primary/50 transition-all duration-500 h-full flex flex-col gap-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg">
-                    {index + 1}
-                  </div>
-                  <p className="text-foreground/80 text-base leading-relaxed font-medium">{point}</p>
-                </div>
-              </TiltCard>
-            </motion.div>
-          ))}
-        </div>
+
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
