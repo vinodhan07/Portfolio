@@ -19,7 +19,7 @@ const socialLinks = [
 
 export function Contact() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { amount: 0.1, margin: "-100px" });
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -68,7 +68,7 @@ export function Contact() {
         {/* Section Header */}
         <div className="mb-4">
           <h2 className="text-5xl md:text-6xl font-black tracking-tight">
-            <TextReveal variant="slide">Get In Touch</TextReveal>
+            <TextReveal splitBy="chars" variant="slide">Get In Touch.</TextReveal>
           </h2>
         </div>
 
@@ -150,50 +150,48 @@ export function Contact() {
           </motion.div>
 
           {/* Contact Form */}
-          <TiltCard tiltStrength={2}>
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.7 }}
-              className="bg-card/20 backdrop-blur-xl p-8 md:p-12 rounded-3xl border border-border/40 shadow-2xl relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 p-4 opacity-10">
-                <Send size={120} />
-              </div>
-              
-              <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/60 px-1">Full Name</label>
-                    <Input name="name" required placeholder="John Doe" maxLength={100} disabled={isSubmitting} className={inputClass} />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/60 px-1">Email Address</label>
-                    <Input name="email" type="email" required placeholder="john@example.com" maxLength={255} disabled={isSubmitting} className={inputClass} />
-                  </div>
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="bg-card/20 backdrop-blur-xl p-8 md:p-12 rounded-3xl border border-border/40 shadow-2xl relative overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 p-4 opacity-10">
+              <Send size={120} />
+            </div>
+            
+            <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/60 px-1">Full Name</label>
+                  <Input name="name" required placeholder="John Doe" maxLength={100} disabled={isSubmitting} className={inputClass} />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/60 px-1">Message</label>
-                  <Textarea name="message" required placeholder="Tell me about your project..." maxLength={1000} rows={5} disabled={isSubmitting}
-                    className="w-full bg-background/50 border-border/40 rounded-xl p-5 resize-none placeholder:text-muted-foreground/40 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" />
+                  <label className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/60 px-1">Email Address</label>
+                  <Input name="email" type="email" required placeholder="john@example.com" maxLength={255} disabled={isSubmitting} className={inputClass} />
                 </div>
-                
-                <MagneticButton strength={0.2} className="w-full">
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90 h-16 rounded-xl text-lg font-black flex items-center justify-center gap-3 transition-all shadow-[0_10px_30px_-10px_rgba(var(--primary-rgb),0.5)]"
-                  >
-                    {isSubmitting ? (
-                      <><Loader2 className="animate-spin" size={24} /> SENDING...</>
-                    ) : (
-                      <>SEND MESSAGE <Send size={20} /></>
-                    )}
-                  </Button>
-                </MagneticButton>
-              </form>
-            </motion.div>
-          </TiltCard>
+              </div>
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/60 px-1">Message</label>
+                <Textarea name="message" required placeholder="Tell me about your project..." maxLength={1000} rows={5} disabled={isSubmitting}
+                  className="w-full bg-background/50 border-border/40 rounded-xl p-5 resize-none placeholder:text-muted-foreground/40 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" />
+              </div>
+              
+              <MagneticButton strength={0.2} className="w-full">
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 h-16 rounded-xl text-lg font-black flex items-center justify-center gap-3 transition-all shadow-[0_10px_30px_-10px_rgba(var(--primary-rgb),0.5)]"
+                >
+                  {isSubmitting ? (
+                    <><Loader2 className="animate-spin" size={24} /> SENDING...</>
+                  ) : (
+                    <>SEND MESSAGE <Send size={20} /></>
+                  )}
+                </Button>
+              </MagneticButton>
+            </form>
+          </motion.div>
         </div>
       </ParallaxSection>
     </section>

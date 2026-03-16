@@ -37,7 +37,7 @@ const techIcons = [
 
 export function Skills() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { amount: 0.2, margin: "-100px" });
 
   return (
     <section id="skills" className="py-24 relative overflow-hidden" ref={ref}>
@@ -52,7 +52,7 @@ export function Skills() {
             EXPERTISE
           </span>
           <h2 className="text-5xl md:text-7xl font-black mt-2 mb-8 tracking-tighter">
-            <TextReveal splitBy="chars" variant="slide">SKILLS.</TextReveal>
+            <TextReveal splitBy="chars" variant="slide">Skills.</TextReveal>
           </h2>
           <div className="max-w-4xl">
             <TextReveal variant="blur" delay={0.4} className="text-muted-foreground text-xl leading-relaxed" splitBy="words">
@@ -74,7 +74,7 @@ export function Skills() {
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg">
                     {index + 1}
                   </div>
-                  <p className="text-gray-200 text-base leading-relaxed font-medium">{point}</p>
+                  <p className="text-foreground/80 text-base leading-relaxed font-medium">{point}</p>
                 </div>
               </TiltCard>
             </motion.div>

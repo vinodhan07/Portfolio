@@ -7,7 +7,7 @@ import { ParallaxSection, TextReveal, TiltCard } from "./animations";
 
 export function About() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { amount: 0.2, margin: "-100px" });
 
   return (
     <section id="about" className="py-24 relative overflow-hidden" ref={ref}>
@@ -15,7 +15,7 @@ export function About() {
         {/* Section Header */}
         <div className="mb-4">
           <h2 className="text-5xl md:text-6xl font-black tracking-tight">
-            <TextReveal variant="slide">About Me</TextReveal>
+            <TextReveal splitBy="chars" variant="slide">About Me.</TextReveal>
           </h2>
         </div>
 

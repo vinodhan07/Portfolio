@@ -20,7 +20,7 @@ const Index = () => {
       <BackgroundEffects />
       <div className="relative z-10">
         <Header />
-        <main>
+        <main className="relative">
           <Hero />
           <About />
           <Education />

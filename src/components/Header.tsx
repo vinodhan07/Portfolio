@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
 import { MagneticButton, TextReveal } from "./animations";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navLinks = [
   { name: "About", href: "#about" },
@@ -70,7 +71,8 @@ export function Header() {
               </MagneticButton>
             ))}
             
-            <div className="ml-4">
+            <div className="flex items-center gap-4 ml-4">
+              <ThemeToggle />
               <MagneticButton strength={0.3}>
                 <Button
                   onClick={() => scrollToSection("#contact")}
@@ -82,8 +84,9 @@ export function Header() {
             </div>
           </nav>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          {/* Mobile Menu Actions */}
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
             <button
               className="p-2 text-foreground"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

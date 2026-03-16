@@ -18,14 +18,14 @@ export function Publications() {
       <ParallaxSection speed={0.06} className="container mx-auto px-4 max-w-6xl relative z-10">
         <div className="mb-4">
           <h2 className="text-5xl md:text-6xl font-black tracking-tight">
-            <TextReveal splitBy="words">Publications</TextReveal>
+            <TextReveal splitBy="chars" variant="slide">Publications.</TextReveal>
           </h2>
         </div>
 
         <motion.p
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          viewport={{ amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-muted-foreground mb-4 text-lg"
         >
@@ -35,7 +35,7 @@ export function Publications() {
         <motion.div
           initial={{ width: 0 }}
           whileInView={{ width: 80 }}
-          viewport={{ once: true }}
+          viewport={{ amount: 0.2 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "circOut" }}
           className="h-1.5 bg-primary rounded-full mb-16"
         />
@@ -46,7 +46,7 @@ export function Publications() {
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ amount: 0.2 }}
               transition={{ duration: 0.8, delay: 0.5 + index * 0.1 }}
             >
               <TiltCard tiltStrength={2}>

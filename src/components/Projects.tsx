@@ -7,7 +7,7 @@ import { ParallaxSection, TextReveal } from "./animations";
 
 export function Projects() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { amount: 0.1, margin: "-100px" });
 
   return (
     <section id="projects" className="py-24 relative overflow-hidden" ref={ref}>

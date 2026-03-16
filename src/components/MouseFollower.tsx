@@ -38,8 +38,8 @@ export function MouseFollower() {
         x: cursorXSpring,
         y: cursorYSpring,
         opacity: isVisible ? 1 : 0,
-        background: "radial-gradient(circle, hsl(262, 83%, 58%) 0%, hsl(262, 83%, 58%) 40%, transparent 70%)",
-        boxShadow: "0 0 20px hsl(262, 83%, 58% / 0.6), 0 0 40px hsl(262, 83%, 58% / 0.3)",
+        background: "radial-gradient(circle, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.8) 40%, transparent 70%)",
+        boxShadow: "0 0 20px hsl(var(--primary) / 0.4), 0 0 40px hsl(var(--primary) / 0.2)",
       }}
     />
   );

@@ -1,20 +1,33 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Award, Medal, Users, Trophy, FileText } from "lucide-react";
+import { Award, Medal, Users, Trophy, FileText, Zap } from "lucide-react";
 import { ParallaxSection, TextReveal, TiltCard } from "./animations";
 
 interface AchievementItem {
   title: string;
-  description: string;
+  description: string | string[];
   icon: typeof Award;
+  link?: string;
 }
 
 const achievements: AchievementItem[] = [
   {
     title: "Certifications",
-    description: "Prompt Engineering – Great Learning, Java Programming – Thinkverge, AI for Beginners – HP Foundation 2025",
+    description: [
+      "Prompt Engineering – Great Learning",
+      "Java Programming – Thinkverge",
+      "AI for Beginners – HP Foundation 2025",
+      "Master n8n AI Agents: Build & Sell AI Agents and Automations - Udemy",
+      "Claude Code in Action - Anthropic"
+    ],
     icon: Medal,
+    link: "https://www.linkedin.com/in/vavinodhan/details/certifications/",
+  },
+   {
+    title: "Code Sangram secured  3rd Place and INR 30,000 Prize",
+    description: "Alliance One Code Sangram, a 36-hour national-level hackathon, competing against 40+teams across India in AI and software development",
+    icon: Zap,
   },
   {
     title: "AARAM'25 UX Designathon",
@@ -45,7 +58,7 @@ const achievements: AchievementItem[] = [
 
 export function Achievements() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { amount: 0.2, margin: "-100px" });
 
   return (
     <section id="achievements" className="py-24 relative overflow-hidden" ref={ref}>
@@ -53,7 +66,7 @@ export function Achievements() {
         {/* Section Header */}
         <div className="mb-4">
           <h2 className="text-5xl md:text-6xl font-black tracking-tight">
-            <TextReveal splitBy="chars" variant="slide">Achievements & Certifications</TextReveal>
+            <TextReveal splitBy="chars" variant="slide">Achievements.</TextReveal>
           </h2>
         </div>
 
@@ -101,11 +114,34 @@ export function Achievements() {
                       <div className="p-4 bg-primary/10 rounded-2xl group-hover:bg-primary/20 transition-colors">
                         <achievement.icon className="text-primary group-hover:scale-110 transition-transform duration-300" size={24} />
                       </div>
-                      <Award size={16} className="text-muted-foreground opacity-30" />
+                      <div className="flex gap-2">
+                        {achievement.link && (
+                          <a 
+                            href={achievement.link} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="p-2 bg-foreground/5 hover:bg-primary/20 rounded-lg transition-colors text-muted-foreground hover:text-primary"
+                          >
+                            <FileText size={16} />
+                          </a>
+                        )}
+                        <Award size={16} className="text-muted-foreground opacity-30 mt-2" />
+                      </div>
                     </div>
                     <div>
                       <h4 className="text-xl font-bold text-foreground mb-3 leading-tight group-hover:text-primary transition-colors">{achievement.title}</h4>
-                      <p className="text-muted-foreground text-sm leading-relaxed">{achievement.description}</p>
+                      {Array.isArray(achievement.description) ? (
+                        <ul className="space-y-2">
+                          {achievement.description.map((point, i) => (
+                            <li key={i} className="text-muted-foreground text-sm leading-relaxed flex items-start gap-2">
+                              <span className="w-1.5 h-1.5 rounded-full bg-primary/60 mt-1.5 shrink-0" />
+                              {point}
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p className="text-muted-foreground text-sm leading-relaxed">{achievement.description}</p>
+                      )}
                     </div>
                   </div>
                 </TiltCard>

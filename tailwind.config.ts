@@ -49,6 +49,14 @@ export default {
         },
         "hero-gradient-start": "hsl(var(--hero-gradient-start))",
         "hero-gradient-end": "hsl(var(--hero-gradient-end))",
+        code: {
+          keyword: "hsl(var(--code-keyword))",
+          variable: "hsl(var(--code-variable))",
+          string: "hsl(var(--code-string))",
+          comment: "hsl(var(--code-comment))",
+          number: "hsl(var(--code-number))",
+          function: "hsl(var(--code-function))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

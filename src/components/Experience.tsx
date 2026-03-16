@@ -35,7 +35,7 @@ const experiences: ExperienceItem[] = [
 
 export function Experience() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { amount: 0.2, margin: "-100px" });
 
   return (
     <section id="experience" className="py-24 relative overflow-hidden" ref={ref}>
@@ -43,7 +43,7 @@ export function Experience() {
         {/* Section Header */}
         <div className="mb-4">
           <h2 className="text-5xl md:text-6xl font-black tracking-tight">
-            <TextReveal splitBy="chars" variant="slide">Experience</TextReveal>
+            <TextReveal splitBy="chars" variant="slide">Experience.</TextReveal>
           </h2>
         </div>
 

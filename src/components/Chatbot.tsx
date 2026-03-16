@@ -137,88 +137,86 @@ export const Chatbot = () => {
             exit={{ opacity: 0, y: 20, scale: 0.95, filter: "blur(10px)" }}
             className="fixed bottom-24 right-6 z-50 w-[380px] max-w-[calc(100vw-3rem)]"
           >
-            <TiltCard tiltStrength={2} className="w-full">
-              <div className="bg-zinc-900/90 backdrop-blur-2xl border border-white/10 rounded-[2rem] shadow-2xl overflow-hidden">
-                <div className="bg-gradient-to-r from-primary/20 to-primary/5 p-6 border-b border-white/5 relative overflow-hidden">
-                  <div className="relative z-10">
-                    <h3 className="text-white font-black tracking-tight flex items-center gap-2">
-                       <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                      Chat with Vinodhan's AI
-                    </h3>
-                    <p className="text-white/60 text-xs font-medium uppercase tracking-widest mt-1">Status: Online</p>
-                  </div>
-                  <div className="absolute top-0 right-0 p-4 opacity-10">
-                    <MessageCircle size={80} />
-                  </div>
+            <div className="bg-zinc-900/90 backdrop-blur-2xl border border-white/10 rounded-[2rem] shadow-2xl overflow-hidden">
+              <div className="bg-gradient-to-r from-primary/20 to-primary/5 p-6 border-b border-white/5 relative overflow-hidden">
+                <div className="relative z-10">
+                  <h3 className="text-white font-black tracking-tight flex items-center gap-2">
+                     <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                    Chat with Vinodhan's AI
+                  </h3>
+                  <p className="text-white/60 text-xs font-medium uppercase tracking-widest mt-1">Status: Online</p>
                 </div>
+                <div className="absolute top-0 right-0 p-4 opacity-10">
+                  <MessageCircle size={80} />
+                </div>
+              </div>
 
-                <div className="h-[320px] overflow-y-auto p-6 space-y-4 custom-scrollbar">
-                  {messages.map((msg, i) => (
-                    <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                      <div className={`max-w-[85%] p-4 rounded-2xl text-sm ${msg.role === "user"
-                        ? "bg-primary text-primary-foreground rounded-br-none font-medium shadow-lg"
-                        : "bg-zinc-800/80 text-zinc-100 rounded-bl-none border border-white/5"
-                        }`}>
-                        <span className="whitespace-pre-wrap [&_a]:text-primary [&_a]:underline [&_a]:font-bold"
-                          dangerouslySetInnerHTML={{ __html: renderMarkdownLinks(msg.content) }} />
-                      </div>
+              <div className="h-[320px] overflow-y-auto p-6 space-y-4 custom-scrollbar">
+                {messages.map((msg, i) => (
+                  <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+                    <div className={`max-w-[85%] p-4 rounded-2xl text-sm ${msg.role === "user"
+                      ? "bg-primary text-primary-foreground rounded-br-none font-medium shadow-lg"
+                      : "bg-zinc-800/80 text-zinc-100 rounded-bl-none border border-white/5"
+                      }`}>
+                      <span className="whitespace-pre-wrap [&_a]:text-primary [&_a]:underline [&_a]:font-bold"
+                        dangerouslySetInnerHTML={{ __html: renderMarkdownLinks(msg.content) }} />
                     </div>
+                  </div>
+                ))}
+                {isLoading && (
+                  <div className="flex justify-start">
+                    <div className="bg-zinc-800/80 p-4 rounded-2xl rounded-bl-none border border-white/5 flex gap-1.5 items-center">
+                      {[0, 150, 300].map(d => (
+                        <motion.span 
+                          key={d} 
+                          className="w-1.5 h-1.5 bg-primary/60 rounded-full"
+                          animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }}
+                          transition={{ repeat: Infinity, duration: 1, delay: d/1000 }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+                <div ref={endRef} />
+              </div>
+
+              <div className="p-6 border-t border-white/5 bg-zinc-900/50">
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {presets.map(({ label, Icon, query }) => (
+                    <MagneticButton key={label} strength={0.2}>
+                      <button onClick={() => handleSend(query)} disabled={isLoading}
+                        className="flex items-center gap-2 px-4 py-2 text-xs bg-zinc-800 hover:bg-zinc-700 text-zinc-300 rounded-xl border border-white/5 transition-all disabled:opacity-50 font-bold uppercase tracking-wider">
+                        <Icon size={12} className="text-primary" />{label}
+                      </button>
+                    </MagneticButton>
                   ))}
-                  {isLoading && (
-                    <div className="flex justify-start">
-                      <div className="bg-zinc-800/80 p-4 rounded-2xl rounded-bl-none border border-white/5 flex gap-1.5 items-center">
-                        {[0, 150, 300].map(d => (
-                          <motion.span 
-                            key={d} 
-                            className="w-1.5 h-1.5 bg-primary/60 rounded-full"
-                            animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }}
-                            transition={{ repeat: Infinity, duration: 1, delay: d/1000 }}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  <div ref={endRef} />
                 </div>
-
-                <div className="p-6 border-t border-white/5 bg-zinc-900/50">
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {presets.map(({ label, Icon, query }) => (
-                      <MagneticButton key={label} strength={0.2}>
-                        <button onClick={() => handleSend(query)} disabled={isLoading}
-                          className="flex items-center gap-2 px-4 py-2 text-xs bg-zinc-800 hover:bg-zinc-700 text-zinc-300 rounded-xl border border-white/5 transition-all disabled:opacity-50 font-bold uppercase tracking-wider">
-                          <Icon size={12} className="text-primary" />{label}
-                        </button>
+                <div className="flex gap-3 items-center">
+                  <div className="relative flex-1 group">
+                    <input 
+                      value={input} 
+                      onChange={e => setInput(e.target.value)}
+                      onKeyDown={e => e.key === "Enter" && handleSend(input)} 
+                      placeholder="Ask me something..."
+                      disabled={isLoading} 
+                      className="w-full pl-5 pr-12 py-4 rounded-2xl bg-zinc-800/80 text-zinc-100 text-sm placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-primary/40 disabled:opacity-50 border border-white/5 transition-all" 
+                    />
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                      <MagneticButton strength={0.3}>
+                        <Button 
+                          size="icon" 
+                          onClick={() => handleSend(input)} 
+                          disabled={isLoading || !input.trim()}
+                          className="rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 w-10 h-10 shadow-lg"
+                        >
+                          {isLoading ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
+                        </Button>
                       </MagneticButton>
-                    ))}
-                  </div>
-                  <div className="flex gap-3 items-center">
-                    <div className="relative flex-1 group">
-                      <input 
-                        value={input} 
-                        onChange={e => setInput(e.target.value)}
-                        onKeyDown={e => e.key === "Enter" && handleSend(input)} 
-                        placeholder="Ask me something..."
-                        disabled={isLoading} 
-                        className="w-full pl-5 pr-12 py-4 rounded-2xl bg-zinc-800/80 text-zinc-100 text-sm placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-primary/40 disabled:opacity-50 border border-white/5 transition-all" 
-                      />
-                      <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                        <MagneticButton strength={0.3}>
-                          <Button 
-                            size="icon" 
-                            onClick={() => handleSend(input)} 
-                            disabled={isLoading || !input.trim()}
-                            className="rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 w-10 h-10 shadow-lg"
-                          >
-                            {isLoading ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
-                          </Button>
-                        </MagneticButton>
-                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </TiltCard>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
