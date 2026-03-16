@@ -51,7 +51,8 @@ const achievements: AchievementItem[] = [
   },
   {
     title: "Leadership",
-    description: "Secretary – Rotaract Club, Campus Google Student Ambassador",
+    description:["Secretary – Rotaract Club", 
+    "Campus Google Student Ambassador"],
     icon: Users,
   },
 ];

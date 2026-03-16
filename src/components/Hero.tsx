@@ -40,11 +40,22 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background transition-colors duration-500"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-transparent transition-colors duration-500"
     >
+      {/* Grid pattern overlay - Matching other themed sections */}
+      <div 
+        className="absolute inset-0 opacity-[0.03] dark:opacity-[0.02]" 
+        style={{
+          backgroundImage: `linear-gradient(to right, hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--foreground)) 1px, transparent 1px)`,
+          backgroundSize: '40px 40px',
+          maskImage: 'radial-gradient(circle at center, black, transparent 80%)',
+          WebkitMaskImage: 'radial-gradient(circle at center, black, transparent 80%)'
+        }}
+      />
+
       {/* Background radial glow */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] pointer-events-none opacity-50 dark:opacity-30" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[100px] pointer-events-none opacity-30 dark:opacity-20" />
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] pointer-events-none opacity-50 dark:opacity-20" />
+      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[100px] pointer-events-none opacity-30 dark:opacity-10" />
 
       <div className="container mx-auto px-6 md:px-12 lg:px-20 py-32 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-8">
@@ -60,7 +71,7 @@ export function Hero() {
               <span className="text-muted-foreground text-lg md:text-xl font-medium">Hello, I'm</span>
             </motion.div>
 
-            <h1 className="text-[clamp(3.5rem,10vw,8rem)] font-black mb-4 tracking-[-0.05em] leading-[0.9] flex flex-col">
+            <h1 className="text-[clamp(3rem,9vw,7.5rem)] font-black mb-4 tracking-[-0.07em] leading-[0.85] flex flex-col whitespace-nowrap">
               <TextReveal delay={0.4} splitBy="chars" variant="slide" className="text-foreground">
                 VINODHAN
               </TextReveal>

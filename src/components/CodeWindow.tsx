@@ -28,15 +28,15 @@ export function CodeWindow() {
       {/* Window Decoration */}
       <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/50 to-secondary/50 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-1000" />
       
-      <div className="relative bg-[#0d1117]/90 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl overflow-hidden aspect-[4/3] md:aspect-auto">
+      <div className="relative bg-card/60 backdrop-blur-xl rounded-2xl border border-border/40 shadow-2xl overflow-hidden aspect-[4/3] md:aspect-auto">
         {/* Title Bar */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-white/5 bg-white/5">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-border/40 bg-muted/20">
           <div className="flex gap-2">
             <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
             <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
             <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
           </div>
-          <div className="text-[10px] font-medium text-white/40 uppercase tracking-widest">profile.ts</div>
+          <div className="text-[10px] font-medium text-muted-foreground uppercase tracking-widest px-2 py-0.5 rounded bg-foreground/5">profile.ts</div>
           <div className="w-12" /> {/* Spacer */}
         </div>
 
@@ -50,7 +50,7 @@ export function CodeWindow() {
               transition={{ delay: 1 + i * 0.05 }}
               className={`flex gap-4 ${line.indent ? "pl-4" : ""} ${line.extraIndent ? "pl-8" : ""}`}
             >
-              <span className="text-white/20 select-none w-4 text-right">{i + 1}</span>
+              <span className="text-muted-foreground/30 select-none w-4 text-right">{i + 1}</span>
               <span className={line.color}>{line.text}</span>
             </motion.div>
           ))}
