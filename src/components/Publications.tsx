@@ -7,7 +7,7 @@ const publications = [
   {
     title: "A Flexible Multi-Task Structure Contextual Modality Attention Based Emotion Recognition",
     type: "Published Research Paper",
-    link: "https://ieeexplore.ieee.org/abstract/document/11167765", 
+    link: "https://ieeexplore.ieee.org/abstract/document/11167765",
     journal: "IEEE Xplore",
   },
 ];
@@ -54,7 +54,7 @@ export function Publications() {
                   <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
                     <BookOpen size={120} />
                   </div>
-                  
+
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 relative z-10">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-4">
@@ -68,18 +68,20 @@ export function Publications() {
                       </h3>
                       <p className="text-muted-foreground font-bold tracking-wide">{pub.journal}</p>
                     </div>
-                    
-                    <MagneticButton strength={0.3} className="relative z-20">
-                      <Button
-                        asChild
-                        className="bg-primary text-primary-foreground hover:bg-primary/90 h-14 px-8 rounded-xl text-sm font-black uppercase tracking-widest flex items-center gap-3 transition-all shadow-[0_10px_30px_-10px_rgba(var(--primary-rgb),0.5)]"
-                      >
-                        <a href={pub.link} target="_blank" rel="noopener noreferrer">
-                          View Publication
-                          <ExternalLink size={18} />
-                        </a>
-                      </Button>
-                    </MagneticButton>
+
+                    <div className="relative z-20">
+                      <MagneticButton strength={0.3}>
+                        <Button
+                          asChild
+                          className="bg-primary text-primary-foreground hover:bg-primary/90 h-14 px-8 rounded-xl text-sm font-black uppercase tracking-widest flex items-center gap-3 transition-all shadow-[0_10px_30px_-10px_rgba(var(--primary-rgb),0.5)]"
+                        >
+                          <a href={pub.link} target="_blank" rel="noopener noreferrer">
+                            View Publication
+                            <ExternalLink size={18} />
+                          </a>
+                        </Button>
+                      </MagneticButton>
+                    </div>
                   </div>
                 </div>
               </TiltCard>

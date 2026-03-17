@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export function CodeWindow() {
   const codeLines = [
@@ -17,6 +18,32 @@ export function CodeWindow() {
     { text: '"Engineering what\'s next."', color: "text-code-keyword", indent: false },
     { text: "};", color: "text-code-variable" },
   ];
+
+  const [currentLineIndex, setCurrentLineIndex] = useState(0);
+  const [currentCharIndex, setCurrentCharIndex] = useState(0);
+  const [displayedLines, setDisplayedLines] = useState<string[]>(Array(codeLines.length).fill(""));
+
+  useEffect(() => {
+    if (currentLineIndex >= codeLines.length) return;
+
+    const currentLineText = codeLines[currentLineIndex].text;
+    
+    if (currentCharIndex < currentLineText.length) {
+      const timeout = setTimeout(() => {
+        const newLines = [...displayedLines];
+        newLines[currentLineIndex] = currentLineText.slice(0, currentCharIndex + 1);
+        setDisplayedLines(newLines);
+        setCurrentCharIndex(currentCharIndex + 1);
+      }, 30 + Math.random() * 40); // Randomized typing speed
+      return () => clearTimeout(timeout);
+    } else {
+      const timeout = setTimeout(() => {
+        setCurrentLineIndex(currentLineIndex + 1);
+        setCurrentCharIndex(0);
+      }, 200); // Delay between lines
+      return () => clearTimeout(timeout);
+    }
+  }, [currentLineIndex, currentCharIndex]);
 
   return (
     <motion.div
@@ -41,24 +68,25 @@ export function CodeWindow() {
         </div>
 
         {/* Code Content */}
-        <div className="p-8 font-mono text-xs md:text-sm lg:text-base leading-relaxed overflow-x-auto">
+        <div className="p-8 font-mono text-xs md:text-sm lg:text-base leading-relaxed overflow-x-auto min-h-[350px]">
           {codeLines.map((line, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1 + i * 0.05 }}
-              className={`flex gap-4 ${line.indent ? "pl-4" : ""} ${line.extraIndent ? "pl-8" : ""}`}
+              className={`flex gap-4 ${line.indent ? "pl-4" : ""} ${line.extraIndent ? "pl-8" : ""} ${i > currentLineIndex && displayedLines[i] === "" ? "invisible" : ""}`}
             >
               <span className="text-muted-foreground/30 select-none w-4 text-right">{i + 1}</span>
-              <span className={line.color}>{line.text}</span>
-            </motion.div>
+              <span className={line.color}>
+                {displayedLines[i]}
+                {i === currentLineIndex && (
+                  <motion.span
+                    animate={{ opacity: [1, 0] }}
+                    transition={{ duration: 0.5, repeat: Infinity }}
+                    className="inline-block w-2 h-4 bg-primary ml-0.5 align-middle"
+                  />
+                )}
+              </span>
+            </div>
           ))}
-          <motion.div
-            animate={{ opacity: [1, 0] }}
-            transition={{ duration: 0.8, repeat: Infinity }}
-            className="inline-block w-2 h-4 bg-primary ml-10 mt-1"
-          />
         </div>
       </div>
     </motion.div>
