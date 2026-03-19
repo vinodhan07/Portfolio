@@ -21,7 +21,7 @@ export function Projects() {
           <span className="text-primary text-xs font-black tracking-[0.4em] uppercase mb-4 block">
             SELECTED PROJECTS
           </span>
-          <h2 className="text-6xl md:text-8xl font-black mb-8 tracking-tighter">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-8 tracking-tighter">
             <TextReveal variant="slide">Projects.</TextReveal>
           </h2>
           <p className="text-muted-foreground text-xl leading-relaxed max-w-4xl font-medium">

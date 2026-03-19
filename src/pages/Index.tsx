@@ -12,12 +12,16 @@ import { Footer } from "@/components/Footer";
 import { BackgroundEffects } from "@/components/BackgroundEffects";
 import { Chatbot } from "@/components/Chatbot";
 import { MouseFollower } from "@/components/MouseFollower";
+import { LoadingScreen } from "@/components/LoadingScreen";
+import { MotionConfig } from "framer-motion";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground relative">
-      <MouseFollower />
-      <BackgroundEffects />
+      <LoadingScreen />
+      <MotionConfig reducedMotion="user">
+        <MouseFollower />
+        <BackgroundEffects />
       <div className="relative z-10">
         <Header />
         <main className="relative">
@@ -34,6 +38,7 @@ const Index = () => {
         <Footer />
         <Chatbot />
       </div>
+      </MotionConfig>
     </div>
   );
 };

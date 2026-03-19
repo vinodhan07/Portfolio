@@ -1,7 +1,7 @@
 export const portfolioData = {
     personalInfo: {
         name: "Vinodhan V A",
-        title: "Full Stack Developer & AI Enthusiast",
+        title: "AI Engineer & Full Stack Developer",
         location: "Salem, India",
         education: "B.Tech in Computer Science and Engineering (2023-2027) at Knowledge Institute of Technology",
         cgpa: "7.7 (Till 5th Sem)",

@@ -42,7 +42,7 @@ export function Experience() {
       <ParallaxSection speed={0.12} className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="mb-4">
-          <h2 className="text-5xl md:text-6xl font-black tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight">
             <TextReveal splitBy="chars" variant="slide">Experience.</TextReveal>
           </h2>
         </div>

@@ -67,7 +67,7 @@ export function Contact() {
       <ParallaxSection speed={0.15} className="container mx-auto px-4 relative z-10 max-w-6xl">
         {/* Section Header */}
         <div className="mb-4">
-          <h2 className="text-5xl md:text-6xl font-black tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight">
             <TextReveal splitBy="chars" variant="slide">Get In Touch.</TextReveal>
           </h2>
         </div>
@@ -159,24 +159,24 @@ export function Contact() {
             <div className="absolute top-0 right-0 p-4 opacity-10">
               <Send size={120} />
             </div>
-            
+
             <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/60 px-1">Full Name</label>
-                  <Input name="name" required placeholder="John Doe" maxLength={100} disabled={isSubmitting} className={inputClass} />
+                  <Input name="name" required placeholder="your name here" maxLength={100} disabled={isSubmitting} className={inputClass} />
                 </div>
                 <div className="space-y-2">
                   <label className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/60 px-1">Email Address</label>
-                  <Input name="email" type="email" required placeholder="john@example.com" maxLength={255} disabled={isSubmitting} className={inputClass} />
+                  <Input name="email" type="email" required placeholder="your email here" maxLength={255} disabled={isSubmitting} className={inputClass} />
                 </div>
               </div>
               <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/60 px-1">Message</label>
-                <Textarea name="message" required placeholder="Tell me about your project..." maxLength={1000} rows={5} disabled={isSubmitting}
+                <Textarea name="message" required placeholder="your message here..." maxLength={1000} rows={5} disabled={isSubmitting}
                   className="w-full bg-background/50 border-border/40 rounded-xl p-5 resize-none placeholder:text-muted-foreground/40 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" />
               </div>
-              
+
               <MagneticButton strength={0.2} className="w-full">
                 <Button
                   type="submit"

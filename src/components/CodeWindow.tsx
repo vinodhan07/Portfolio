@@ -8,7 +8,7 @@ export function CodeWindow() {
     { text: "=", color: "text-primary" },
     { text: " {", color: "text-code-variable" },
     { text: '  name: "Vinodhan V A",', color: "text-code-string", indent: true },
-    { text: '  role: "Full-Stack Engineer",', color: "text-code-string", indent: true },
+    { text: '  role: "AI Engineer & Full Stack Developer",', color: "text-code-string", indent: true },
     { text: '  mission: "I build intelligent systems', color: "text-code-number", indent: true },
     { text: '    that scale and secure.",', color: "text-code-number", indent: true, extraIndent: true },
     { text: "  specialties: [", color: "text-code-variable", indent: true },
@@ -27,7 +27,7 @@ export function CodeWindow() {
     if (currentLineIndex >= codeLines.length) return;
 
     const currentLineText = codeLines[currentLineIndex].text;
-    
+
     if (currentCharIndex < currentLineText.length) {
       const timeout = setTimeout(() => {
         const newLines = [...displayedLines];
@@ -54,7 +54,7 @@ export function CodeWindow() {
     >
       {/* Window Decoration */}
       <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/50 to-secondary/50 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-1000" />
-      
+
       <div className="relative bg-card/60 backdrop-blur-xl rounded-2xl border border-border/40 shadow-2xl overflow-hidden aspect-[4/3] md:aspect-auto">
         {/* Title Bar */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-border/40 bg-muted/20">

@@ -52,9 +52,9 @@ const getFallback = (q: string): string => {
   }
   if (lower.includes("contact") || lower.includes("email")) {
     return `You can contact Vinodhan at:
-📧 [${portfolioData.contact.email}](mailto:${portfolioData.contact.email})
-💼 [LinkedIn](${portfolioData.contact.linkedin})
-🐙 [GitHub](${portfolioData.contact.github})`;
+[${portfolioData.contact.email}](mailto:${portfolioData.contact.email})
+[LinkedIn](${portfolioData.contact.linkedin})
+[GitHub](${portfolioData.contact.github})`;
   }
   if (lower.includes("resume") || lower.includes("cv")) {
     return `Download resume: [Click here](${portfolioData.contact.resume})`;

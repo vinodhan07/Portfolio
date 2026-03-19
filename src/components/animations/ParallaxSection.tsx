@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef, type ReactNode } from "react";
+import { useIsMobile, useReducedMotion } from "../../hooks/use-mobile";
 
 interface ParallaxSectionProps {
   children: ReactNode;
@@ -23,6 +24,8 @@ export function ParallaxSection({
   scale,
 }: ParallaxSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
+  const prefersReducedMotion = useReducedMotion();
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -41,6 +44,10 @@ export function ParallaxSection({
   const scaleValue = scale
     ? useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [scale[0], 1, 1, scale[1]])
     : undefined;
+
+  if (isMobile || prefersReducedMotion) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <motion.div

@@ -13,7 +13,7 @@ export function Education() {
       <ParallaxSection speed={0.1} className="container mx-auto px-4 relative z-10 max-w-6xl">
         {/* Section Header */}
         <div className="mb-4">
-          <h2 className="text-5xl md:text-6xl font-black tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight">
             <TextReveal splitBy="chars" variant="slide">Education.</TextReveal>
           </h2>
         </div>
@@ -43,7 +43,7 @@ export function Education() {
             transition={{ duration: 0.8, delay: 0.5 }}
           >
             <TiltCard tiltStrength={2}>
-              <div className="bg-card/20 backdrop-blur-xl p-8 md:p-12 rounded-[2.5rem] border border-border/40 relative overflow-hidden group shadow-2xl">
+              <div className="bg-card/20 backdrop-blur-xl p-8 md:p-12 rounded-2xl md:rounded-[2.5rem] border border-border/40 relative overflow-hidden group shadow-2xl">
                 <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
                   <GraduationCap size={160} />
                 </div>

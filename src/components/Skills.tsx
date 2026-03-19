@@ -45,7 +45,7 @@ export function Skills() {
           <span className="text-primary text-sm font-bold tracking-[0.4em] uppercase mb-4 block">
             EXPERTISE
           </span>
-          <h2 className="text-5xl md:text-7xl font-black mt-2 mb-8 tracking-tighter">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black mt-2 mb-8 tracking-tighter">
             <TextReveal splitBy="chars" variant="slide">Skills.</TextReveal>
           </h2>
           <div className="max-w-4xl">
@@ -58,17 +58,27 @@ export function Skills() {
 
 
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 1 }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.05,
+                delayChildren: 0.8,
+              }
+            }
+          }}
+          initial="hidden"
+          animate={isInView ? "show" : "hidden"}
           className="flex flex-wrap justify-center gap-6 p-10 bg-card/10 backdrop-blur-sm rounded-3xl border border-border/20"
         >
-          {techIcons.map((tech, index) => (
+          {techIcons.map((tech) => (
             <motion.div
               key={tech.name}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.4, delay: 1.2 + index * 0.04 }}
+              variants={{
+                hidden: { opacity: 0, scale: 0.5, y: 20 },
+                show: { opacity: 1, scale: 1, y: 0, transition: { type: "spring", stiffness: 200 } }
+              }}
               className="group"
             >
               <TiltCard tiltStrength={15} className="w-24 h-24">

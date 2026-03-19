@@ -3,6 +3,7 @@ import { ArrowRight, Download, MapPin, Sparkles } from "lucide-react";
 import { Button } from "./ui/button";
 import { useEffect, useState } from "react";
 import { TextReveal, MagneticButton } from "./animations";
+import { AnimatedCounter } from "./animations/AnimatedCounter";
 import { CodeWindow } from "./CodeWindow";
 
 export function Hero() {
@@ -104,6 +105,27 @@ export function Hero() {
                 />
               )}
             </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.6, duration: 0.6 }}
+              className="flex items-center gap-8 md:gap-12 mb-12"
+            >
+              <div>
+                <div className="text-4xl md:text-5xl font-black text-foreground flex items-center">
+                  <AnimatedCounter from={0} to={10} /><span className="text-primary ml-1">+</span>
+                </div>
+                <div className="text-xs md:text-sm text-muted-foreground font-bold uppercase tracking-widest mt-2">Projects Delivered</div>
+              </div>
+              <div className="w-px h-12 bg-border/50" />
+              <div>
+                <div className="text-4xl md:text-5xl font-black text-foreground flex items-center">
+                  <AnimatedCounter from={0} to={2} /><span className="text-primary ml-1">+</span>
+                </div>
+                <div className="text-xs md:text-sm text-muted-foreground font-bold uppercase tracking-widest mt-2">Years Experience</div>
+              </div>
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}

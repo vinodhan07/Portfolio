@@ -7,6 +7,7 @@ import { ThemeToggle } from "./ThemeToggle";
 
 const navLinks = [
   { name: "About", href: "#about" },
+  { name: "Education", href: "#education" },
   { name: "Experience", href: "#experience" },
   { name: "Achievements", href: "#achievements" },
   { name: "Skills", href: "#skills" },
@@ -88,51 +89,78 @@ export function Header() {
           <div className="md:hidden flex items-center gap-2">
             <ThemeToggle />
             <button
-              className="p-2 text-foreground"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle menu"
+              className="p-2 text-foreground min-w-[44px] min-h-[44px] flex items-center justify-center"
+              onClick={() => setIsMobileMenuOpen(true)}
+              aria-label="Open menu"
             >
-              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              <Menu size={28} />
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation Drawer */}
         <AnimatePresence>
           {isMobileMenuOpen && (
-            <motion.nav
-              className="md:hidden mt-6 flex flex-col gap-4 pb-8 overflow-hidden"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.4, ease: "circOut" }}
-            >
-              <div className="h-px bg-border/40 w-full mb-2" />
-              {navLinks.map((link, i) => (
-                <motion.button
-                  key={link.name}
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: i * 0.05 }}
-                  onClick={() => scrollToSection(link.href)}
-                  className="text-xl font-bold text-foreground hover:text-primary transition-colors text-left py-2"
-                >
-                  {link.name}
-                </motion.button>
-              ))}
+            <>
+              {/* Backdrop */}
               <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.3 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="md:hidden fixed inset-0 z-40 bg-background/80 backdrop-blur-sm h-screen"
+                style={{ top: 0, left: 0, right: 0, bottom: 0 }}
+              />
+
+              {/* Drawer */}
+              <motion.nav
+                className="md:hidden fixed top-0 right-0 h-screen z-50 w-[80%] max-w-sm bg-card/95 backdrop-blur-xl border-l border-border/40 shadow-2xl flex flex-col pt-6 px-6 gap-6"
+                initial={{ x: "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "100%" }}
+                transition={{ type: "spring", damping: 25, stiffness: 200 }}
               >
-                <Button
-                  onClick={() => scrollToSection("#contact")}
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 w-full rounded-2xl h-14 text-lg font-bold mt-4"
+                <div className="flex justify-end items-center gap-4 mb-8">
+                  <ThemeToggle />
+                  <button
+                    className="p-2 text-foreground min-w-[44px] min-h-[44px] flex items-center justify-center bg-muted/50 rounded-full"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    aria-label="Close menu"
+                  >
+                    <X size={24} />
+                  </button>
+                </div>
+                
+                <div className="flex flex-col gap-4">
+                  {navLinks.map((link, i) => (
+                    <motion.button
+                      key={link.name}
+                      initial={{ x: 20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 0.1 + i * 0.05 }}
+                      onClick={() => scrollToSection(link.href)}
+                      className="text-2xl font-black text-foreground hover:text-primary transition-colors text-left py-3 border-b border-border/20"
+                    >
+                      {link.name}
+                    </motion.button>
+                  ))}
+                </div>
+                
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                  className="mt-auto mb-10"
                 >
-                  Contact Me
-                </Button>
-              </motion.div>
-            </motion.nav>
+                  <Button
+                    onClick={() => scrollToSection("#contact")}
+                    className="bg-primary text-primary-foreground hover:bg-primary/90 w-full rounded-2xl h-14 text-lg font-bold shadow-lg shadow-primary/25 min-h-[44px]"
+                  >
+                    Contact Me
+                  </Button>
+                </motion.div>
+              </motion.nav>
+            </>
           )}
         </AnimatePresence>
       </div>

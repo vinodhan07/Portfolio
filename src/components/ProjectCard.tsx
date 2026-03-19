@@ -21,8 +21,9 @@ export function ProjectCard({ project, index, isInView }: ProjectCardProps) {
     >
       <TiltCard tiltStrength={8} className="h-full">
         <div className="bg-card/40 backdrop-blur-md rounded-2xl border border-border/50 hover:border-primary/40 hover:shadow-[0_10px_40px_-10px_rgba(var(--primary-rgb),0.2)] transition-all duration-300 flex flex-col h-full transform-gpu overflow-hidden">
-          {/* Subtle noise texture overlay */}
+          {/* Subtle noise texture overlay and gradient hover preview */}
           <div className="absolute inset-0 opacity-[0.01] mix-blend-overlay pointer-events-none" style={{ backgroundImage: "url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZmlsdGVyIGlkPSJub2lzZUZpbHRlciI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjbm9pc2VGaWx0ZXIpIi8+PC9zdmc+')" }} />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
           
           <div className="p-7 flex flex-col h-full relative z-10">
             {/* Header with folder icon, title, and action icons */}

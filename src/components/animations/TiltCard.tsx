@@ -1,5 +1,6 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef, type ReactNode, type MouseEvent } from "react";
+import { useIsMobile, useReducedMotion } from "../../hooks/use-mobile";
 
 interface TiltCardProps {
   children: ReactNode;
@@ -17,6 +18,9 @@ export function TiltCard({
   perspective = 800,
 }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
+  const prefersReducedMotion = useReducedMotion();
+
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
 
@@ -45,6 +49,10 @@ export function TiltCard({
     mouseX.set(0.5);
     mouseY.set(0.5);
   };
+
+  if (isMobile || prefersReducedMotion) {
+    return <div className={`relative ${className}`}>{children}</div>;
+  }
 
   return (
     <motion.div

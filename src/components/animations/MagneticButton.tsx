@@ -1,5 +1,6 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef, type ReactNode, type MouseEvent } from "react";
+import { useIsMobile, useReducedMotion } from "../../hooks/use-mobile";
 
 interface MagneticButtonProps {
   children: ReactNode;
@@ -16,6 +17,9 @@ export function MagneticButton({
   onClick,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
+  const prefersReducedMotion = useReducedMotion();
+
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -42,6 +46,14 @@ export function MagneticButton({
     x.set(0);
     y.set(0);
   };
+
+  if (isMobile || prefersReducedMotion) {
+    return (
+      <div className={`relative inline-block ${className}`} onClick={onClick}>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <motion.div
