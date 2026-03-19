@@ -1,14 +1,19 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
+import { useIsMobile } from "../hooks/use-mobile";
 
 export const BackgroundEffects = memo(function BackgroundEffects() {
+  const isMobile = useIsMobile();
+  
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {/* Ambient background glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--background)),hsl(var(--background)_/_0.8))]" />
 
-      {/* Animated gradient orbs */}
-      <motion.div
+      {/* Animated gradient orbs (Desktop only for max performance) */}
+      {!isMobile && (
+        <>
+          <motion.div
         animate={{
           x: [0, 100, -50, 0],
           y: [0, -50, 100, 0],
@@ -52,6 +57,8 @@ export const BackgroundEffects = memo(function BackgroundEffects() {
         className="absolute top-[30%] left-[40%] w-[30vw] h-[30vh] rounded-full opacity-10 dark:opacity-5 blur-[80px]"
         style={{ background: 'hsl(var(--primary))' }}
       />
+        </>
+      )}
 
       {/* Grid pattern overlay */}
       <div 

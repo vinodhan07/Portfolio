@@ -89,7 +89,7 @@ export function MouseFollower() {
           scale: isHovering ? 2.5 : 1,
           backgroundColor: isHovering 
             ? (isLight ? "hsl(var(--secondary) / 0.1)" : "hsl(var(--primary) / 0.1)") 
-            : "transparent",
+            : (isLight ? "hsl(var(--secondary) / 0)" : "hsl(var(--primary) / 0)"),
           borderColor: isHovering 
             ? (isLight ? "hsl(var(--secondary) / 0.8)" : "hsl(var(--primary) / 0.8)") 
             : (isLight ? "hsl(var(--secondary) / 0.5)" : "hsl(var(--primary) / 0.5)"),

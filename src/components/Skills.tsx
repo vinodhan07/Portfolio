@@ -31,7 +31,7 @@ const techIcons = [
 
 export function Skills() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { amount: 0.2, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
     <section id="skills" className="py-24 relative overflow-hidden" ref={ref}>

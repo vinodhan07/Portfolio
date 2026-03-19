@@ -53,7 +53,7 @@ export function ParallaxSection({
   return (
     <motion.div
       ref={ref}
-      className={className}
+      className={`relative ${className}`}
       style={{
         y,
         ...(fadeIn ? { opacity } : {}),
