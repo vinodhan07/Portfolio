@@ -9,8 +9,8 @@ interface TextRevealProps {
   once?: boolean;
   /** 'words' splits by word, 'chars' splits by character, 'lines' treats as single block */
   splitBy?: "words" | "chars" | "lines";
-  /** Animation style: 'blur' fades in with blur, 'slide' slides up, 'scale' scales in */
-  variant?: "blur" | "slide" | "scale";
+  /** Animation style: 'blur' fades in with blur, 'slide' slides up, 'scale' scales in, 'typing' reveals char by char */
+  variant?: "blur" | "slide" | "scale" | "typing";
 }
 
 const variants = {
@@ -25,6 +25,10 @@ const variants = {
   scale: {
     hidden: { opacity: 0, scale: 0.8, y: 10 },
     visible: { opacity: 1, scale: 1, y: 0 },
+  },
+  typing: {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
   },
 };
 
@@ -73,28 +77,58 @@ export function TextReveal({
     );
   }
 
-  const items = splitBy === "chars" ? text.split("") : text.split(" ");
+  if (splitBy === "chars") {
+    const words = text.split(" ");
+    const startIndices: number[] = [0];
+    for (let i = 0; i < words.length - 1; i++) {
+      startIndices.push(startIndices[i] + words[i].length + 1);
+    }
 
+    return (
+      <span ref={ref} className={`inline-flex flex-wrap gap-x-[0.25em] gap-y-1 ${className}`} style={{ perspective: 400 }}>
+        {words.map((word, wordI) => (
+          <span key={`word-${wordI}`} className="inline-block whitespace-nowrap">
+            {word.split("").map((char, charI) => {
+              const i = startIndices[wordI] + charI;
+              return (
+                <motion.span
+                  key={`${char}-${i}`}
+                  className="inline-block"
+                  initial={variants[variant].hidden}
+                  animate={isInView ? variants[variant].visible : variants[variant].hidden}
+                  transition={{
+                    duration: variant === "typing" ? 0.01 : duration * 0.8,
+                    delay: delay + i * (variant === "typing" ? 0.04 : 0.02),
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                  }}
+                >
+                  {char}
+                </motion.span>
+              );
+            })}
+          </span>
+        ))}
+      </span>
+    );
+  }
+
+  // Handle words mode
+  const words = text.split(" ");
   return (
-    <span
-      ref={ref}
-      className={`inline-flex flex-wrap ${className}`}
-      style={{ perspective: 400 }}
-    >
-      {items.map((item, i) => (
+    <span ref={ref} className={`inline-flex flex-wrap ${className}`} style={{ perspective: 400 }}>
+      {words.map((word, i) => (
         <motion.span
-          key={`${item}-${i}`}
+          key={`${word}-${i}`}
           className="inline-block"
           initial={variants[variant].hidden}
           animate={isInView ? variants[variant].visible : variants[variant].hidden}
           transition={{
             duration: duration * 0.8,
-            delay: delay + i * (splitBy === "chars" ? 0.02 : 0.04),
+            delay: delay + i * 0.04,
             ease: [0.25, 0.46, 0.45, 0.94],
           }}
         >
-          {item}
-          {splitBy === "words" && <span>&nbsp;</span>}
+          {word}<span>&nbsp;</span>
         </motion.span>
       ))}
     </span>
