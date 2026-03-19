@@ -59,7 +59,9 @@ const achievements: AchievementItem[] = [
 
 export function Achievements() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { amount: 0.2, margin: "-100px" });
+  // Using once: true and removing amount: 0.2 because on mobile, the stacked section
+  // is so tall that 20% of it is taller than the screen itself, preventing it from ever firing!
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
     <section id="achievements" className="py-24 relative overflow-hidden" ref={ref}>

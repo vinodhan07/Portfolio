@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { BookOpen, ExternalLink, FileText } from "lucide-react";
+import { useRef } from "react";
 import { Button } from "./ui/button";
 import { ParallaxSection, TextReveal, TiltCard, MagneticButton } from "./animations";
 
@@ -13,6 +14,9 @@ const publications = [
 ];
 
 export function Publications() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
   return (
     <section id="publications" className="py-24 relative overflow-hidden">
       <ParallaxSection speed={0.06} className="container mx-auto px-4 max-w-6xl relative z-10">
@@ -23,9 +27,9 @@ export function Publications() {
         </div>
 
         <motion.p
+          ref={ref}
           initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ amount: 0.1 }}
+          animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-muted-foreground mb-4 text-lg"
         >

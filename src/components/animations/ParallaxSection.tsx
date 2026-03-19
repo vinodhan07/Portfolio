@@ -41,9 +41,10 @@ export function ParallaxSection({
   const y = useSpring(rawY, { damping: 30, stiffness: 100 });
 
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  const scaleValue = scale
-    ? useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [scale[0], 1, 1, scale[1]])
-    : undefined;
+  
+  const activeScale = scale || [1, 1];
+  const transformedScale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [activeScale[0], 1, 1, activeScale[1]]);
+  const scaleValue = scale ? transformedScale : undefined;
 
   if (isMobile || prefersReducedMotion) {
     return <div className={className}>{children}</div>;

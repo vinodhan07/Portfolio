@@ -36,6 +36,11 @@ export function TiltCard({
   const glowPosX = useTransform(smoothX, [0, 1], [0, 100]);
   const glowPosY = useTransform(smoothY, [0, 1], [0, 100]);
 
+  const backgroundGlow = useTransform(
+    [glowPosX, glowPosY],
+    ([x, y]) => `radial-gradient(circle at ${x}% ${y}%, hsl(${glowColor} / 0.12), transparent 60%)`
+  );
+
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
@@ -79,11 +84,7 @@ export function TiltCard({
         <motion.div
           className="absolute inset-0 rounded-[inherit] pointer-events-none opacity-0 hover-parent:opacity-100 transition-opacity"
           style={{
-            background: useTransform(
-              [glowPosX, glowPosY],
-              ([x, y]) =>
-                `radial-gradient(circle at ${x}% ${y}%, hsl(${glowColor} / 0.12), transparent 60%)`
-            ),
+            background: backgroundGlow,
           }}
         />
       </motion.div>
