@@ -25,11 +25,11 @@ const techIcons = [
   { name: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
   { name: "Colab", logo: "https://colab.research.google.com/img/colab_favicon_256px.png" },
   { name: "Cursor", logo: "https://www.cursor.com/favicon.ico" },
-  { name: "Ollama", logo: "https://cdn.simpleicons.org/ollama" },
-  { name: "Antigravity", logo: antigravityLogo },
-  { name: "Qdrant", logo: "https://cdn.simpleicons.org/qdrant" },
+  { name: "Ollama", logo: "https://cdn.simpleicons.org/ollama", invertDark: true },
+  { name: "Antigravity", logo: antigravityLogo, invertDark: true },
+  { name: "Qdrant", logo: "https://raw.githubusercontent.com/qdrant/qdrant/master/docs/logo.svg", invertDark: true },
   { name: "TensorFlow", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" },
-  { name: "LangChain", logo: "https://cdn.simpleicons.org/langchain" },
+  { name: "LangChain", logo: "https://cdn.simpleicons.org/langchain", invertDark: true },
   { name: "Numpy", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" },
 ];
 
@@ -88,7 +88,7 @@ export function Skills() {
               <TiltCard tiltStrength={15} className="w-24 h-24">
                 <div className="bg-background/80 backdrop-blur-md w-full h-full rounded-2xl border border-border/40 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.3)] transition-all group overflow-hidden relative">
                   <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <img src={tech.logo} alt={tech.name} className="w-10 h-10 object-contain relative z-10 filter group-hover:grayscale-0 grayscale transition-all duration-300" />
+                  <img src={tech.logo} alt={tech.name} className={`w-10 h-10 object-contain relative z-10 filter group-hover:grayscale-0 grayscale transition-all duration-300 ${(tech as any).invertDark ? 'dark:invert' : ''}`} />
                   <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest group-hover:text-primary transition-colors relative z-10">{tech.name}</span>
                 </div>
               </TiltCard>

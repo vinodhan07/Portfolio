@@ -145,12 +145,12 @@ export function Hero() {
               transition={{ delay: 2.2, duration: 1 }}
               className="flex flex-wrap items-center gap-6 pt-8 border-t border-white/5"
             >
-              <div className="flex items-center gap-3 px-4 py-2 bg-success/10 border border-success/20 rounded-full">
+              <div className="flex items-center gap-3 px-4 py-2 bg-green-500/10 border border-green-500/20 rounded-full">
                 <div className="relative flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-success"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
                 </div>
-                <span className="text-xs font-black uppercase tracking-widest text-success">
+                <span className="text-xs font-black uppercase tracking-widest text-green-500">
                   Open to work
                 </span>
               </div>
