@@ -77,10 +77,10 @@ export const portfolioData = {
             repo: "https://github.com/vinodhan07/AI-Based-Image-Similarity-WEB-Scrapping-tool.git",
         },
         {
-            title: "Gen AI Model",
-            description: "Generative AI model implementation showcasing advanced machine learning capabilities and model training.",
-            tech: ["Python", "TensorFlow", "Machine Learning", "AI"],
-            repo: "https://github.com/vinodhan07/Gen-AI-Model",
+            title: "AutoCAD-drawings-and-generates-detailed-Bill-of-Quantities",
+            description: "Developed an automated system that processes AutoCAD drawings to extract structural details and generate accurate Bills of Quantities (BOQ), reducing manual estimation effort and improving cost analysis efficiency.",
+            tech: ["Python", "FastAPI", "AutoCAD API", "ODA Converter", "BOQ Generation", "Data Extraction", "Pandas", "Automation"],
+            repo: "https://github.com/vinodhan07/AutoCAD-drawings-and-generates-detailed-Bill-of-Quantities",
         },
         {
             title: "FinAI HackOps",
@@ -101,10 +101,10 @@ export const portfolioData = {
             repo: "https://github.com/vinodhan07/REAL-TIME-ANNOTATION-USING-VIDEOS.git",
         },
         {
-            title: "AI Agents Intensive Course",
-            description: "Comprehensive course materials on building AI agents, covering architecture, prompts, and agent design patterns.",
-            tech: ["Jupyter Notebook", "Python", "AI/ML", "Education"],
-            repo: "https://github.com/vinodhan07/AI_Agents_Intensive_Course_with_Google",
+            title: "Debuggers AI --- Enterprise Multi-Agent RAG Platform",
+            description: "Enterprise-grade multi-agent RAG platform with autonomous debugging, automated testing, and intelligent code generation capabilities.",
+            tech: ["Fine-tuning", "Python", "Ollama LLM", "RAG", "LangGraph", "Postgres + Redis + Celery"],
+            repo: "https://github.com/vinodhan07/Debugger_AI",
         },
     ],
     achievements: [
