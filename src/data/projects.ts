@@ -9,45 +9,40 @@ export interface Project {
 }
 
 export const staticProjects: Project[] = [
-  {
-   title: "AI-Based Image Similarity & Web Scraping Tool",
-   description: "An AI-powered image similarity system built using OpenCLIP embeddings and FAISS vector search to enable high-speed visual matching across large datasets. Includes automated web scraping pipelines, metadata processing, and a full-stack FastAPI + React implementation for real-time similarity comparison.",
-   tech: ["Python", "OpenCLIP", "FAISS", "FastAPI", "React.js", "Web Scraping", "SQLite"],repoUrl: "https://github.com/vinodhan07/AI-Based-Image-Similarity-WEB-Scrapping-tool.git",
-   featured: true,
-  },
-  {
-    title: "Gen AI Model",
-    description: "A generative AI model implementation showcasing advanced machine learning capabilities and model training.",
-    tech: ["Python", "TensorFlow", "Machine Learning", "AI"],
-    repoUrl: "https://github.com/vinodhan07/Gen-AI-Model",
-    featured: true,
-  },
-  {
-    title: "FinAI HackOps",
-    description: "Financial AI automation platform with intelligent data processing and analytics capabilities.",
-    tech: ["TypeScript", "PLpgSQL", "AI/ML", "Financial Tech"],
-    repoUrl: "https://github.com/vinodhan07/finai-hackops",
-    featured: true,
-  },
-  {
-    title: "n8n AI Automation Agents",
-    description: "Automated workflow agents built with n8n for intelligent task orchestration and process automation.",
-    tech: ["JavaScript", "n8n", "Automation", "AI"],
-    repoUrl: "https://github.com/vinodhan07/n8n-AI-Automation-Agents",
-    featured: false,
-  },
-  {
-    title: "Real-Time Annotation Using Videos",
-    description: "Developed a real-time video annotation system that captures and labels video frames on the fly, enabling efficient labeling workflows for computer vision model training and dataset generation.",
-    tech: ["Python", "OpenCV", "Real-Time Video Processing", "Computer Vision", "Machine Learning", "GUI/Visualization"],
-    repoUrl: "https://github.com/vinodhan07/REAL-TIME-ANNOTATION-USING-VIDEOS.git",
-    featured: true,
-  },
-  {
-    title: "AI Agents Intensive Course",
-    description: "Comprehensive course materials on building AI agents, covering architecture, prompts, and agent design patterns.",
-    tech: ["Jupyter Notebook", "Python", "AI/ML", "Education"],
-    repoUrl: "https://github.com/vinodhan07/AI_Agents_Intensive_Course_with_Google",
-    featured: false,
-  },
+   {
+            title: "AI-Based Image Similarity & Web Scraping Tool",
+            description: "An AI-powered image similarity system built using OpenCLIP embeddings and FAISS vector search to enable high-speed visual matching across large datasets. Includes automated web scraping pipelines, metadata processing, and a full-stack FastAPI + React implementation for real-time similarity comparison.",
+            tech: ["Python", "OpenCLIP", "FAISS", "FastAPI", "React.js", "Web Scraping", "SQLite"],
+            repo: "https://github.com/vinodhan07/AI-Based-Image-Similarity-WEB-Scrapping-tool.git",
+        },
+        {
+            title: "AutoCAD-drawings-and-generates-detailed-Bill-of-Quantities",
+            description: "Developed an automated system that processes AutoCAD drawings to extract structural details and generate accurate Bills of Quantities (BOQ), reducing manual estimation effort and improving cost analysis efficiency.",
+            tech: ["Python", "FastAPI", "AutoCAD API", "ODA Converter", "BOQ Generation", "Data Extraction", "Pandas", "Automation"],
+            repo: "https://github.com/vinodhan07/AutoCAD-drawings-and-generates-detailed-Bill-of-Quantities",
+        },
+        {
+            title: "FinAI HackOps",
+            description: "Financial AI automation platform with intelligent data processing and analytics capabilities.",
+            tech: ["TypeScript", "PLpgSQL", "AI/ML", "Financial Tech"],
+            repo: "https://github.com/vinodhan07/finai-hackops",
+        },
+        {
+            title: "n8n AI Automation Agents",
+            description: "Automated workflow agents built with n8n for intelligent task orchestration and process automation.",
+            tech: ["JavaScript", "n8n", "Automation", "AI"],
+            repo: "https://github.com/vinodhan07/n8n-AI-Automation-Agents",
+        },
+        {
+            title: "Real-Time Annotation Using Videos",
+            description: "Developed a real-time video annotation system that captures and labels video frames on the fly, enabling efficient labeling workflows for computer vision model training and dataset generation.",
+            tech: ["Python", "OpenCV", "Real-Time Video Processing", "Computer Vision", "Machine Learning", "GUI/Visualization"],
+            repo: "https://github.com/vinodhan07/REAL-TIME-ANNOTATION-USING-VIDEOS.git",
+        },
+        {
+            title: "Debuggers AI --- Enterprise Multi-Agent RAG Platform",
+            description: "Enterprise-grade multi-agent RAG platform with autonomous debugging, automated testing, and intelligent code generation capabilities.",
+            tech: ["Fine-tuning", "Python", "Ollama LLM", "RAG", "LangGraph", "Postgres + Redis + Celery"],
+            repo: "https://github.com/vinodhan07/Debugger_AI",
+        },
 ];
