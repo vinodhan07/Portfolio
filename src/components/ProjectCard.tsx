@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { Github, ExternalLink, Folder } from "lucide-react";
 import { Project } from "@/data/projects";
 import { TiltCard } from "./animations";
-import { Button } from "./ui/button";
 
 interface ProjectCardProps {
   project: Project;
@@ -37,22 +36,26 @@ export function ProjectCard({ project, index, isInView }: ProjectCardProps) {
                   {project.title}
                 </h3>
               </div>
-              <div className="flex items-center gap-2 relative z-50">
-                <button
-                  onClick={(e) => { e.stopPropagation(); window.open(project.repoUrl, "_blank", "noopener,noreferrer"); }}
+              <div className="flex items-center gap-2">
+                <a
+                  href={project.repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={`View ${project.title} on GitHub`}
-                  className="p-2 rounded-lg hover:bg-primary/20 transition-colors text-muted-foreground hover:text-primary cursor-pointer border border-transparent"
+                  className="p-2 rounded-lg hover:bg-primary/20 transition-colors text-muted-foreground hover:text-primary"
                 >
                   <Github size={20} />
-                </button>
+                </a>
                 {project.demoUrl && (
-                  <button
-                    onClick={(e) => { e.stopPropagation(); window.open(project.demoUrl, "_blank", "noopener,noreferrer"); }}
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={`View ${project.title} demo`}
-                    className="p-2 rounded-lg hover:bg-primary/20 transition-colors text-muted-foreground hover:text-primary cursor-pointer border border-transparent"
+                    className="p-2 rounded-lg hover:bg-primary/20 transition-colors text-muted-foreground hover:text-primary"
                   >
                     <ExternalLink size={20} />
-                  </button>
+                  </a>
                 )}
               </div>
             </div>
@@ -70,7 +73,7 @@ export function ProjectCard({ project, index, isInView }: ProjectCardProps) {
             </p>
 
             {/* Tech Tags */}
-            <div className="flex flex-wrap gap-2 mt-auto mb-6">
+            <div className="flex flex-wrap gap-2 mt-auto">
               {project.tech.map((tech) => (
                 <span
                   key={tech}
@@ -80,13 +83,6 @@ export function ProjectCard({ project, index, isInView }: ProjectCardProps) {
                 </span>
               ))}
             </div>
-
-            <Button
-              className="w-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground font-bold shadow-none border border-primary/20 group-hover:border-transparent transition-all relative z-50 rounded-xl py-6"
-              onClick={(e) => { e.stopPropagation(); window.open(project.repoUrl, "_blank", "noopener,noreferrer"); }}
-            >
-              <Github size={16} className="mr-2" /> View Repository
-            </Button>
           </div>
         </div>
       </TiltCard>

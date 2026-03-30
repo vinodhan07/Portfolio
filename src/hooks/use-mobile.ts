@@ -5,12 +5,12 @@ export function useIsMobile() {
 
   useEffect(() => {
     const checkIsMobile = () => {
-      // Check for touch capability or narrow screen width
-      const hasTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
-      const hasNoHover = window.matchMedia("(hover: none)").matches;
-      const isNarrowScreen = window.innerWidth < 768; // md breakpoint
+      // Check for narrow screen width (Tailwind md breakpoint)
+      const isNarrow = window.innerWidth < 768;
+      // Check if the primary input device is touch-only (excludes laptops with touchscreens + physical trackpads)
+      const isTouchOnly = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
 
-      setIsMobile(hasTouch || hasNoHover || isNarrowScreen);
+      setIsMobile(isNarrow || isTouchOnly);
     };
 
     checkIsMobile();

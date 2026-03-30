@@ -25,11 +25,11 @@ const techIcons = [
   { name: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
   { name: "Colab", logo: "https://colab.research.google.com/img/colab_favicon_256px.png" },
   { name: "Cursor", logo: "https://www.cursor.com/favicon.ico" },
-  { name: "Ollama", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ollama/ollama-original.svg" },
+  { name: "Ollama", logo: "https://cdn.simpleicons.org/ollama" },
   { name: "Antigravity", logo: antigravityLogo },
-  { name: "Qdrant", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/qdrant/qdrant-original.svg" },
+  { name: "Qdrant", logo: "https://cdn.simpleicons.org/qdrant" },
   { name: "TensorFlow", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" },
-  { name: "LangChain", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/langchain/langchain-original.svg" },
+  { name: "LangChain", logo: "https://cdn.simpleicons.org/langchain" },
   { name: "Numpy", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" },
 ];
 
