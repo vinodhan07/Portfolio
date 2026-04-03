@@ -13,7 +13,7 @@ export const portfolioData = {
         email: "vinovb21@gmail.com",
         linkedin: "https://linkedin.com/in/vavinodhan",
         github: "https://github.com/vinodhan07",
-        resume: "/VInodhan FINAL 1.pdf",
+        resume: "/VInodhan V A.pdf",
     },
     skills: {
         categories: [

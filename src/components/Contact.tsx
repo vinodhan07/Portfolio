@@ -7,13 +7,14 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { MagneticButton, TextReveal, TiltCard, ParallaxSection } from "./animations";
+import { portfolioData } from "../data/portfolioData";
 
 const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
-const EMAIL = "vinovb21@gmail.com";
+const EMAIL = portfolioData.contact.email;
 
 const socialLinks = [
-  { Icon: Github, href: "https://github.com/vinodhan07", label: "GitHub" },
-  { Icon: Linkedin, href: "https://www.linkedin.com/in/vavinodhan/", label: "LinkedIn" },
+  { Icon: Github, href: portfolioData.contact.github, label: "GitHub" },
+  { Icon: Linkedin, href: portfolioData.contact.linkedin, label: "LinkedIn" },
   { Icon: Mail, href: `mailto:${EMAIL}`, label: "Email" },
 ];
 

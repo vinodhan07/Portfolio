@@ -1,4 +1,5 @@
 import { Github, Linkedin, Mail } from "lucide-react";
+import { portfolioData } from "../data/portfolioData";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -10,13 +11,13 @@ export function Footer() {
           © {currentYear} <span className="text-primary hover:scale-110 transition-transform inline-block cursor-default">Vinodhan V A</span>. Crafted with passion & AI.
         </p>
         <div className="flex items-center gap-6">
-          <a href="https://github.com/vinodhan07" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors p-2" aria-label="GitHub">
+          <a href={portfolioData.contact.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors p-2" aria-label="GitHub">
             <Github size={20} />
           </a>
-          <a href="https://linkedin.com/in/vinodhan" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors p-2" aria-label="LinkedIn">
+          <a href={portfolioData.contact.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors p-2" aria-label="LinkedIn">
             <Linkedin size={20} />
           </a>
-          <a href="mailto:contact@vinodhan.ai" className="text-muted-foreground hover:text-primary transition-colors p-2" aria-label="Email">
+          <a href={`mailto:${portfolioData.contact.email}`} className="text-muted-foreground hover:text-primary transition-colors p-2" aria-label="Email">
             <Mail size={20} />
           </a>
         </div>

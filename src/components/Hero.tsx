@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { TextReveal, MagneticButton } from "./animations";
 import { AnimatedCounter } from "./animations/AnimatedCounter";
 import { CodeWindow } from "./CodeWindow";
+import { portfolioData } from "../data/portfolioData";
 
 export function Hero() {
   const fullText = "An architect of the web, blending systems engineering with creative design. I don't just build applications; I craft resilient digital ecosystems that thrive under pressure.";
@@ -131,7 +132,7 @@ export function Hero() {
                   className="border-white/10 hover:bg-white/5 bg-white/5 backdrop-blur-sm rounded-full px-10 h-16 text-lg font-bold text-foreground"
                   asChild
                 >
-                  <a href="/VInodhan FINAL 1.pdf" download>
+                  <a href={portfolioData.contact.resume} download>
                     <Download className="mr-2" size={20} />
                     Download Resume
                   </a>
