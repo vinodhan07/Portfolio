@@ -87,12 +87,12 @@ export function MouseFollower() {
         }}
         animate={{
           scale: isHovering ? 2.5 : 1,
-          backgroundColor: isHovering 
-            ? (isLight ? "hsl(var(--secondary) / 0.1)" : "hsl(var(--primary) / 0.1)") 
-            : (isLight ? "hsl(var(--secondary) / 0)" : "hsl(var(--primary) / 0)"),
-          borderColor: isHovering 
-            ? (isLight ? "hsl(var(--secondary) / 0.8)" : "hsl(var(--primary) / 0.8)") 
-            : (isLight ? "hsl(var(--secondary) / 0.5)" : "hsl(var(--primary) / 0.5)"),
+          backgroundColor: isHovering
+            ? (isLight ? "rgba(236, 64, 122, 0.1)" : "rgba(0, 229, 255, 0.1)")
+            : (isLight ? "rgba(236, 64, 122, 0)" : "rgba(0, 229, 255, 0)"),
+          borderColor: isHovering
+            ? (isLight ? "rgba(236, 64, 122, 0.8)" : "rgba(0, 229, 255, 0.8)")
+            : (isLight ? "rgba(236, 64, 122, 0.5)" : "rgba(0, 229, 255, 0.5)"),
         }}
         transition={{ duration: 0.2 }}
       />
